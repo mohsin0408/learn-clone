@@ -21,13 +21,13 @@ const Header = () => {
   ];
   return (
     <>
-      <div className="flex items-center justify-center gap-5 px-20 mt-2 bg-[rgba(47,43,59,0.97)]">
+      <div className="flex items-center justify-center gap-5 px-10 md:px-20 sticky top-0 bg-[rgba(47,43,59,0.97)] ">
         {headerData.map((obj, index) => (
           <>
             <img src={obj.logo} />
             <ul
               key={index}
-              className="items-center justify-center hidden gap-5 cursor-pointer lg:flex ">
+              className="items-center justify-center hidden gap-5 cursor-pointer lg:flex">
               {obj.links?.map((link, index) => (
                 <li key={index} className="text-white hover:text-[#ccc]">
                   {link}
@@ -47,7 +47,7 @@ const Header = () => {
       {/* Hamburger */}
 
       {toggle && (
-        <ul>
+        <ul className="fixed w-full ">
           {headerData[1].links?.map((link, index) => (
             <li
               key={index}
