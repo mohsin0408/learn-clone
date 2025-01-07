@@ -5,13 +5,13 @@ import { useFormik } from "formik";
 const validate = (values) => {
   const errors = {};
   if (!values.fullName) {
-    errors.fullName = "Required";
+    errors.fullName = "*Required*";
   } else if (values.fullName.length > 15) {
     errors.fullName = "Must be 15 characters or less";
   }
 
   if (!values.email) {
-    errors.email = "Required";
+    errors.email = "*Required*";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = "Invalid email address";
   }
@@ -39,7 +39,9 @@ const Registration = () => {
     <>
       <div className="flex flex-col items-center justify-center gap-3 p-6">
         <h3 className="text-3xl font-semibold">Sign up</h3>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">
           <div className="flex flex-col">
             <label htmlFor="fullName">Full Name</label>
             <input
@@ -50,7 +52,7 @@ const Registration = () => {
               value={values.fullName}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="w-full p-2 mt-2 border border-black rounded-lg "
+              className="w-[340px] p-2 mt-2 border border-black rounded-lg "
             />
             {touched.fullName && errors.fullName ? (
               <div>{errors.fullName}</div>
@@ -66,7 +68,7 @@ const Registration = () => {
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="w-full p-2 mt-2 border border-black rounded-lg "
+              className="w-[340px] p-2 mt-2 border border-black rounded-lg "
             />
             {touched.email && errors.email ? <div>{errors.email}</div> : null}
           </div>
