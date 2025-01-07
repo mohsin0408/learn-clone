@@ -37,9 +37,9 @@ const Registration = () => {
     });
   return (
     <>
-      <div className="flex flex-col items-center justify-center p-6">
-        <h3>Sign up</h3>
-        <form onSubmit={handleSubmit}>
+      <div className="flex flex-col items-center justify-center gap-3 p-6">
+        <h3 className="text-3xl font-semibold">Sign up</h3>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div className="flex flex-col">
             <label htmlFor="fullName">Full Name</label>
             <input
@@ -50,6 +50,7 @@ const Registration = () => {
               value={values.fullName}
               onChange={handleChange}
               onBlur={handleBlur}
+              className="w-full p-2 mt-2 border border-black rounded-lg "
             />
             {touched.fullName && errors.fullName ? (
               <div>{errors.fullName}</div>
@@ -65,17 +66,25 @@ const Registration = () => {
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
+              className="w-full p-2 mt-2 border border-black rounded-lg "
             />
             {touched.email && errors.email ? <div>{errors.email}</div> : null}
           </div>
           <label className="flex gap-2">
-            <input id="check" name="check" type="checkbox" />
+            <input id="check" name="check" type="checkbox" className="w-8" />
             <p>
               I agree to receive promotional and instructional emails from
               Academind
             </p>
           </label>
+          <p className="text-sm text-gray-400">
+            By signing up, I agree to Academind's Privacy & Terms and
+            Teachable's Privacy 7 Terms
+          </p>
           <Button text="Send Code" />
+          <p className="text-sm text-center text-gray-400">
+            Already have an account? Log in
+          </p>
         </form>
       </div>
     </>
