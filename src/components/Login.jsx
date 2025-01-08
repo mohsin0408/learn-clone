@@ -5,7 +5,7 @@ const Login = () => {
     <>
       <div className="flex flex-col items-center justify-center gap-3 p-6 ">
         <h3 className="text-3xl font-semibold">Log in</h3>
-        <form className=" flex-col items-center gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">
+        <form className=" flex flex-col gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">
           <div className="flex flex-col">
             <label htmlFor="Email">Email</label>
             <input
@@ -20,7 +20,7 @@ const Login = () => {
             <input id="check" name="check" type="checkbox" />
             <p>Remember me</p>
           </div>
-          <Button text="Log in" cla />
+          <Button text="Log in" />
           <p className="p-4 text-sm text-center text-gray-400 ">
             Doesn't have an Account? Sign up
           </p>

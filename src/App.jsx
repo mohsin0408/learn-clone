@@ -8,6 +8,7 @@ import Question from "./components/Question";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Curriculum from "./components/Curriculum";
+import AllCourses from "./components/AllCourses";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Registration />
       <Login />
       <Curriculum />
+      <AllCourses />
     </>
   );
 };
