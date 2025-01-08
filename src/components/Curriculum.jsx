@@ -27,7 +27,7 @@ const Curriculum = () => {
                 {item}
               </span>
               <span>
-                <Button text="Preview" />
+                <Button text="Preview" rounded="2xl" px={4} />
               </span>
             </div>
           ))}
