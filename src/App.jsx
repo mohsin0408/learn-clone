@@ -7,6 +7,7 @@ import Course from "./components/Course";
 import Question from "./components/Question";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+import Curriculum from "./components/Curriculum";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Question />
       <Registration />
       <Login />
+      <Curriculum />
     </>
   );
 };
