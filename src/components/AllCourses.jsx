@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Course from "./Course";
+import { IoSearch } from "react-icons/io5";
 
 const AllCourses = () => {
+  const [toggle, setToggle] = useState(false);
+  const [newToggle, setNewToggle] = useState(false);
   const categoryData = [
     "All",
     "Web Development",
@@ -28,13 +31,30 @@ const AllCourses = () => {
       <div>
         <div>
           <span>Category</span>
-          <span>All</span>
+          <span onClick={() => setToggle(!toggle)}>All</span>
+          {categoryData.map((item, index) => {
+            return (
+              <div key={index}>
+                <div>{toggle && <p>{item}</p>}</div>
+              </div>
+            );
+          })}
         </div>
         <div>
           <span>Author</span>
-          <span>All</span>
+          <span onClick={() => setNewToggle(!newToggle)}>All</span>
+          {authorData.map((item, index) => {
+            return (
+              <div key={index}>
+                <div>{newToggle && <p>{item}</p>}</div>
+              </div>
+            );
+          })}
         </div>
-        <div></div>
+        <div>
+          <input placeholder="Find a Product" />
+          <IoSearch />
+        </div>
       </div>
       <div>
         <Course />
