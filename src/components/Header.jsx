@@ -21,7 +21,7 @@ const Header = () => {
   ];
   return (
     <>
-      <div className="flex items-center justify-center gap-5 px-10 md:px-20 sticky top-0 bg-[rgba(47,43,59,0.97)] ">
+      <div className="flex items-center justify-center z-50 gap-5 px-10 md:px-20 sticky top-0 bg-[rgba(47,43,59,0.97)] ">
         {headerData.map((obj, index) => (
           <>
             <img src={obj.logo} />
@@ -47,7 +47,7 @@ const Header = () => {
       {/* Hamburger */}
 
       {toggle && (
-        <ul className="fixed w-full ">
+        <ul className="fixed z-50 w-full ">
           {headerData[1].links?.map((link, index) => (
             <li
               key={index}
