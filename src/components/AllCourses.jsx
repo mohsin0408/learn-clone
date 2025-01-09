@@ -28,8 +28,8 @@ const AllCourses = () => {
     "Max & Manuel",
   ];
   return (
-    <div className=" bg-[#f1f0f0] flex flex-col ">
-      <div className="flex flex-col justify-between gap-2 sm:flex-row ">
+    <div className=" bg-[#f1f0f0] flex flex-col items-center ">
+      <div className="flex flex-col justify-between gap-2 p-5 md:flex-row w-[53%] ">
         <div className="flex gap-3 ">
           <div className="relative">
             <span className="flex gap-2 ">
@@ -83,8 +83,11 @@ const AllCourses = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <input placeholder="Find a Product" />
-          <span className="p-1 border border-black ">
+          <input
+            placeholder="Find a Product"
+            className="h-8 px-4 py-1 border-2 "
+          />
+          <span className="p-[7px] border-2 bg-white hover:bg-[#f1f0f0] cursor-pointer ">
             <IoSearch />
           </span>
         </div>
