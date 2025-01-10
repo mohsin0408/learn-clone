@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -32,6 +33,9 @@ const Registration = () => {
           "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
           values
         );
+        const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+        existingUsers.push(values);
+        localStorage.setItem("users", JSON.stringify(existingUsers));
         action.resetForm();
       },
     });
@@ -85,7 +89,7 @@ const Registration = () => {
           </p>
           <Button text="Send Code" />
           <p className="text-sm text-center text-gray-400">
-            Already have an account? Log in
+            Already have an account? <Link to="/Login">Log in</Link>
           </p>
         </form>
       </div>

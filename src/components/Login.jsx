@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
+import { Link, useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const user = storedUsers.find((user) => user.email === email);
+    if (user) {
+      navigate("/Home");
+    } else {
+      alert("invalid");
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-3 p-6 ">
         <h3 className="text-3xl font-semibold">Log in</h3>
-        <form className=" flex flex-col gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">
+        <form
+          className="flex flex-col gap-5 w-[90%] sm:w-[50%] md:w-[23%]"
+          onSubmit={handleLogin}>
           <div className="flex flex-col">
             <label htmlFor="Email">Email</label>
             <input
@@ -14,6 +32,8 @@ const Login = () => {
               type="text"
               placeholder="you@email.com"
               className="w-[310px] p-2 mt-2 border border-black rounded-lg "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex gap-2 py-4 ">
@@ -22,7 +42,7 @@ const Login = () => {
           </div>
           <Button text="Log in" />
           <p className="p-4 text-sm text-center text-gray-400 ">
-            Doesn't have an Account? Sign up
+            Doesn't have an Account? <Link to="/">Sign up</Link>
           </p>
         </form>
       </div>

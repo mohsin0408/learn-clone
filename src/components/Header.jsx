@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -30,7 +31,7 @@ const Header = () => {
               className="items-center justify-center hidden gap-5 cursor-pointer lg:flex">
               {obj.links?.map((link, index) => (
                 <li key={index} className="text-white hover:text-[#ccc]">
-                  {link}
+                  {index === 1 ? <Link to="/AllCourses">{link}</Link> : link}
                 </li>
               ))}
             </ul>
@@ -52,7 +53,7 @@ const Header = () => {
             <li
               key={index}
               className="text-white bg-[rgba(47,43,59,0.97)] p-2 ">
-              {link}
+              {index === 1 ? <Link to="/AllCourses">{link}</Link> : link}
             </li>
           ))}
           <div className="  bg-[rgba(47,43,59,0.97)] p-2 ">
