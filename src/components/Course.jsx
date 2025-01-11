@@ -7,7 +7,7 @@ const Course = () => {
     data: [
       {
         id: "1",
-        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/TWqzpMxDQ62UQUwxsGAA",
+        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ccLoMCzLSLSH11Oqvh0u",
         title: "AI For Developers With GitHub Copilot, Cursor AI & ChatGPT",
         desc: "Leverage AI to boost your productivity as a developer: Use GitHub Copilot, Cursor AI and ChatGPT for efficient coding",
         tutor: "Maximilian Schwarzmüller",
@@ -15,7 +15,7 @@ const Course = () => {
       },
       {
         id: "2",
-        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/3GR2BjYPSwiRudTdf2lw",
+        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/Pv1eJVW9SvOP22Raj8L3",
         title: "ChatGPT - The Complete Guide",
         desc: "10x your productivity by using ChatGPT & OpenAI APIs efficiently. Includes prompt templates & hands-on examples.",
         tutor: "Maximilian Schwarzmüller",
@@ -23,7 +23,7 @@ const Course = () => {
       },
       {
         id: "3",
-        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/Pv1eJVW9SvOP22Raj8L3",
+        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/3GR2BjYPSwiRudTdf2lw",
         title: "Go - The Complete Guide",
         desc: "Learn Go from the ground up & in great depth by building multiple demo projects, incl. a REST API",
         tutor: "Maximilian Schwarzmüller",
@@ -31,7 +31,7 @@ const Course = () => {
       },
       {
         id: "4",
-        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ccLoMCzLSLSH11Oqvh0u",
+        img: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/TWqzpMxDQ62UQUwxsGAA",
         title: "JavaScript Algorithms - The Fundamentals",
         desc: "Learn all the core basics and fundamentals about JavaScript algorithms, dive into tons of examples and get a plan for building and measuring algorithms.",
         tutor: "Maximilian Schwarzmüller",

@@ -29,8 +29,8 @@ const AllCourses = () => {
   ];
   return (
     <div className=" bg-[#f1f0f0] flex flex-col items-center ">
-      <div className="flex flex-col justify-between gap-2 p-5 md:flex-row w-[53%] ">
-        <div className="flex gap-3 ">
+      <div className="flex flex-col justify-between gap-2 p-5 md:flex-row w-[53%]">
+        <div className="flex gap-3">
           <div className="relative">
             <span className="flex gap-2 ">
               <p className="text-[#989898] text-xl ">Category:</p>
