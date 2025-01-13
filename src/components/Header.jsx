@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
-  console.log("toggle", toggle);
 
   const headerData = [
     {

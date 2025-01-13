@@ -1,10 +1,10 @@
 import React from "react";
 
-const FilterList = ({ item, toggle, index }) => {
+const FilterList = ({ item, toggle, index, onClick }) => {
   return (
-    <li key={index} className="list-none ">
-      {toggle && <p>{item}</p>}
-    </li>
+    <ul key={index} className="list-none cursor-pointer ">
+      {toggle && <li onClick={onClick}>{item}</li>}
+    </ul>
   );
 };
 

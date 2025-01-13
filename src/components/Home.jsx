@@ -5,14 +5,15 @@ import Membership from "./Membership";
 import Course from "./Course";
 import Review from "./Review";
 import Question from "./Question";
+import { courseData, heroData } from "../Data/Data";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <Hero />
+      <Hero heroData={heroData} />
       <Membership />
-      <Course />
+      <Course courseData={courseData?.data} />
       <Review />
       <Question />
     </>

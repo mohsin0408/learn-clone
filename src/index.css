@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-.hero {
-  background: url("https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ");
-  position: relative;
-}
 .hero::before {
   content: "";
   position: absolute;

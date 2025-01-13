@@ -2,31 +2,44 @@ import React, { useState } from "react";
 import Course from "./Course";
 import { IoSearch } from "react-icons/io5";
 import FilterList from "./FilterList";
+import { courseData, categoryData, authorData } from "../Data/Data";
 
 const AllCourses = () => {
   const [categoryToggle, setCategoryToggle] = useState(false);
   const [authorToggle, setAuthorToggle] = useState(false);
-  const categoryData = [
-    "All",
-    "Web Development",
-    "Frontend",
-    "Backend",
-    "AWS",
-    "Python",
-    "Testing",
-    "AI",
-    "Mobile Apps",
-    "Fullstacks",
-    "Dvelopment Operations",
-    "Data Analytics",
-    "Membership",
-  ];
-  const authorData = [
-    "All",
-    "Max Schwarzmuller",
-    "Manuel Lorenz",
-    "Max & Manuel",
-  ];
+  const [filteredCoursesList, setFilteredCoursesList] = useState(
+    courseData.data || []
+  );
+  const [currentSelectedCategory, setCurrentSelectedCategory] = useState(
+    categoryData[0]
+  );
+
+  const [currentSelectedAuthor, setCurrentSelectedAuthor] = useState(
+    authorData[0]
+  );
+  const handleCategoryFilter = (item) => {
+    setCurrentSelectedCategory(item);
+
+    const filteredData = courseData?.data?.filter((course) => {
+      const matchCategory = item === "All" || item === course.category;
+      return matchCategory;
+    });
+    setFilteredCoursesList(filteredData);
+    setCategoryToggle(!categoryToggle);
+  };
+
+  const handleAuthorFilter = (item) => {
+    setCurrentSelectedAuthor(item);
+
+    const filteredData = courseData?.data?.filter((course) => {
+      const matchAuthor = item === "All" || item === course.tutor;
+
+      return matchAuthor;
+    });
+    setFilteredCoursesList(filteredData);
+    setAuthorToggle(!authorToggle);
+  };
+
   return (
     <div className=" bg-[#f1f0f0] flex flex-col items-center ">
       <div className="flex flex-col justify-between gap-2 p-5 md:flex-row w-[53%]">
@@ -37,7 +50,7 @@ const AllCourses = () => {
               <p
                 onClick={() => setCategoryToggle(!categoryToggle)}
                 className="text-xl text-[#5A00C7] ">
-                All
+                {currentSelectedCategory}
               </p>
             </span>
             {categoryToggle === true ? (
@@ -45,9 +58,13 @@ const AllCourses = () => {
                 {categoryData?.map((item, index) => {
                   return (
                     <FilterList
+                      key={index}
                       item={item}
                       index={index}
                       toggle={categoryToggle}
+                      onClick={() =>
+                        handleCategoryFilter(item, index, "çategory")
+                      }
                     />
                   );
                 })}
@@ -62,7 +79,7 @@ const AllCourses = () => {
               <p
                 onClick={() => setAuthorToggle(!authorToggle)}
                 className="text-xl text-[#5A00C7] ">
-                All
+                {currentSelectedAuthor}
               </p>
             </span>
             {authorToggle === true ? (
@@ -70,9 +87,11 @@ const AllCourses = () => {
                 {authorData?.map((item, index) => {
                   return (
                     <FilterList
+                      key={index}
                       item={item}
                       index={index}
                       toggle={authorToggle}
+                      onClick={() => handleAuthorFilter(item, index, "author")}
                     />
                   );
                 })}
@@ -93,7 +112,7 @@ const AllCourses = () => {
         </div>
       </div>
       <div>
-        <Course />
+        <Course courseData={filteredCoursesList} />
       </div>
     </div>
   );
