@@ -4,7 +4,7 @@ import Button from "./Button";
 const Hero = ({ heroData }) => {
   return (
     <div
-      className={`hero py-[150px] flex items-center justify-center`}
+      className={`hero py-[150px] flex items-center justify-center relative  `}
       style={{
         background: `url(${heroData?.img})`,
         backgroundRepeat: "no-repeat",
