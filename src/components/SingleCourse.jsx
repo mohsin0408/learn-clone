@@ -2,7 +2,6 @@ import React from "react";
 import Curriculum from "./Curriculum";
 import Hero from "./Hero";
 import { useParams } from "react-router-dom";
-import Header from "./Header";
 
 const SingleCourse = ({ courseData }) => {
   const params = useParams();
@@ -16,7 +15,6 @@ const SingleCourse = ({ courseData }) => {
 
   return (
     <div>
-      <Header />
       <Hero heroData={modifiedData} />
       <Curriculum />
     </div>

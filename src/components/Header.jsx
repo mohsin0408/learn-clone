@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ handlePathname }) => {
   const [toggle, setToggle] = useState(false);
+  const location = useLocation();
+  handlePathname(location.pathname);
 
   const headerData = [
     {
@@ -12,10 +14,22 @@ const Header = () => {
     },
     {
       links: [
-        "What is Academind Pro",
-        "All Courses",
-        "Enrolles Courses",
-        "Community & Support",
+        {
+          name: "What is Academind Pro",
+          link: "/Home",
+        },
+        {
+          name: "All Courses",
+          link: "/AllCourses",
+        },
+        {
+          name: "Enrolles Courses",
+          link: "#",
+        },
+        {
+          name: "Community & Support",
+          link: "#",
+        },
       ],
     },
   ];
@@ -28,10 +42,13 @@ const Header = () => {
             <ul
               key={index}
               className="items-center justify-center hidden gap-5 cursor-pointer lg:flex">
-              {obj.links?.map((link, index) => (
-                <li key={index} className="text-white hover:text-[#ccc]">
-                  {index === 1 ? <Link to="/AllCourses">{link}</Link> : link}
-                </li>
+              {obj.links?.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.link}
+                  className="text-white hover:text-[#ccc]">
+                  {item.name}
+                </Link>
               ))}
             </ul>
           </>
@@ -52,7 +69,9 @@ const Header = () => {
             <li
               key={index}
               className="text-white bg-[rgba(47,43,59,0.97)] p-2 ">
-              {index === 1 ? <Link to="/AllCourses">{link}</Link> : link}
+              <Link to={link.link} onClick={handleLinkClick}>
+                {link.name}
+              </Link>
             </li>
           ))}
           <div className="  bg-[rgba(47,43,59,0.97)] p-2 ">
