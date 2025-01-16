@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import AllCourses from "./components/AllCourses";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import SingleCourse from "./components/SingleCourse";
 import { courseData } from "./Data/Data";
 import Header from "../src/components/Header";
+import { Provider } from "react-redux";
+import store from "../src/components/Store/Store";
 
 const App = () => {
   const [pathname, setPathname] = useState(null);
@@ -20,7 +17,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <Provider store={store}>
       <Router>
         {pathname === "/Login" || pathname === "/" ? null : (
           <Header handlePathname={handlePathname} />
@@ -36,7 +33,7 @@ const App = () => {
           <Route path="/AllCourses" element={<AllCourses />} />
         </Routes>
       </Router>
-    </>
+    </Provider>
   );
 };
 

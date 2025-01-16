@@ -3,8 +3,11 @@ import Course from "./Course";
 import { IoSearch } from "react-icons/io5";
 import FilterList from "./FilterList";
 import { courseData, categoryData, authorData } from "../Data/Data";
+import { setAuthor, setCategory, setFilteredCourses } from "./Store/Store";
+import { useDispatch, useSelector } from "react-redux";
 
 const AllCourses = () => {
+  const dispatch = useDispatch();
   const [categoryToggle, setCategoryToggle] = useState(false);
   const [authorToggle, setAuthorToggle] = useState(false);
   const [filteredCoursesList, setFilteredCoursesList] = useState(
