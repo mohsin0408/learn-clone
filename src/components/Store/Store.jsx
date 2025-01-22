@@ -1,4 +1,4 @@
-import { legacy_createStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 const SET_CATEGORY = "SET_CATEGORY";
 const SET_AUTHOR = "SET_AUTHOR";
@@ -32,8 +32,9 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const store = legacy_createStore(reducer);
-
+const store = configureStore({
+  reducer,
+});
 export default store;
 
 const setCategory = (category) => {
@@ -58,9 +59,9 @@ const setFilteredCourses = (filteredCourses) => {
 };
 
 const filterCourses = (category, author, courseData) => {
-  console.log("Course Data:", courseData);
   return (dispatch) => {
     const filteredData = courseData?.data?.filter((course) => {
+      console.log("Course:", course);
       const matchCategory = category === "All" || category === course.category;
       const matchAuthor = author === "All" || author === course.tutor;
       return matchCategory && matchAuthor;

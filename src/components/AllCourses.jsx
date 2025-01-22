@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Course from "./Course";
 import FilterList from "./FilterList";
 import { courseData, categoryData, authorData } from "../Data/Data";
@@ -19,14 +19,18 @@ const AllCourses = () => {
 
   console.log(filteredCourses);
 
-  const handleCategoryFilter = (item) => {
+  const handleCategoryFilter = (item, index) => {
+    console.log(item, author, courseData, index, "item1");
     setCurrentSelectedCategory(item);
     dispatch(setCategory(item));
     dispatch(filterCourses(item, author, courseData));
     setCategoryToggle(!categoryToggle);
   };
 
-  const handleAuthorFilter = (item) => {
+  console.log("help me");
+
+  const handleAuthorFilter = (item, index) => {
+    console.log(item, category, courseData, index, "item");
     setCurrentSelectedAuthor(item);
     dispatch(setAuthor(item));
     dispatch(filterCourses(category, item, courseData));
@@ -52,7 +56,7 @@ const AllCourses = () => {
                   <FilterList
                     key={index}
                     item={item}
-                    onClick={() => handleCategoryFilter(item)}
+                    onClick={() => handleCategoryFilter(item, index)}
                   />
                 ))}
               </span>
@@ -88,7 +92,11 @@ const AllCourses = () => {
       </div>
 
       <div>
-        <Course courseData={filteredCourses} />
+        {filteredCourses.length === 0 ? (
+          <Course courseData={courseData?.data} />
+        ) : (
+          <Course courseData={filteredCourses} />
+        )}
       </div>
     </div>
   );
