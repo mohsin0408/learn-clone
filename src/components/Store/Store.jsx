@@ -57,4 +57,19 @@ const setFilteredCourses = (filteredCourses) => {
   };
 };
 
-export { setCategory, setAuthor, setFilteredCourses };
+const filterCourses = (category, author, courseData) => {
+  console.log("Course Data:", courseData);
+  return (dispatch) => {
+    const filteredData = courseData?.data?.filter((course) => {
+      const matchCategory = category === "All" || category === course.category;
+      const matchAuthor = author === "All" || author === course.tutor;
+      return matchCategory && matchAuthor;
+    });
+
+    console.log("Filtered Data:", filteredData);
+
+    dispatch(setFilteredCourses(filteredData));
+  };
+};
+
+export { setCategory, setAuthor, setFilteredCourses, filterCourses };

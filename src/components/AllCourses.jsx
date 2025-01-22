@@ -1,50 +1,40 @@
 import React, { useState } from "react";
 import Course from "./Course";
-import { IoSearch } from "react-icons/io5";
 import FilterList from "./FilterList";
 import { courseData, categoryData, authorData } from "../Data/Data";
-import { setAuthor, setCategory, setFilteredCourses } from "./Store/Store";
 import { useDispatch, useSelector } from "react-redux";
+import { setCategory, setAuthor, filterCourses } from "./Store/Store";
 
 const AllCourses = () => {
   const dispatch = useDispatch();
+  const category = useSelector((state) => state.category);
+  const author = useSelector((state) => state.author);
+  const filteredCourses = useSelector((state) => state.filteredCourses);
+
   const [categoryToggle, setCategoryToggle] = useState(false);
   const [authorToggle, setAuthorToggle] = useState(false);
-  const [filteredCoursesList, setFilteredCoursesList] = useState(
-    courseData.data || []
-  );
-  const [currentSelectedCategory, setCurrentSelectedCategory] = useState(
-    categoryData[0]
-  );
+  const [currentSelectedCategory, setCurrentSelectedCategory] =
+    useState(category);
+  const [currentSelectedAuthor, setCurrentSelectedAuthor] = useState(author);
 
-  const [currentSelectedAuthor, setCurrentSelectedAuthor] = useState(
-    authorData[0]
-  );
+  console.log(filteredCourses);
+
   const handleCategoryFilter = (item) => {
     setCurrentSelectedCategory(item);
-
-    const filteredData = courseData?.data?.filter((course) => {
-      const matchCategory = item === "All" || item === course.category;
-      return matchCategory;
-    });
-    setFilteredCoursesList(filteredData);
+    dispatch(setCategory(item));
+    dispatch(filterCourses(item, author, courseData));
     setCategoryToggle(!categoryToggle);
   };
 
   const handleAuthorFilter = (item) => {
     setCurrentSelectedAuthor(item);
-
-    const filteredData = courseData?.data?.filter((course) => {
-      const matchAuthor = item === "All" || item === course.tutor;
-
-      return matchAuthor;
-    });
-    setFilteredCoursesList(filteredData);
+    dispatch(setAuthor(item));
+    dispatch(filterCourses(category, item, courseData));
     setAuthorToggle(!authorToggle);
   };
 
   return (
-    <div className=" bg-[#f1f0f0] flex flex-col items-center ">
+    <div className="bg-[#f1f0f0] flex flex-col items-center">
       <div className="flex flex-col justify-between gap-2 p-5 md:flex-row w-[53%]">
         <div className="flex gap-3">
           <div className="relative">
@@ -58,24 +48,19 @@ const AllCourses = () => {
             </span>
             {categoryToggle === true ? (
               <span className="absolute p-2 border-2 bg-white shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)] ">
-                {categoryData?.map((item, index) => {
-                  return (
-                    <FilterList
-                      key={index}
-                      item={item}
-                      index={index}
-                      toggle={categoryToggle}
-                      onClick={() =>
-                        handleCategoryFilter(item, index, "çategory")
-                      }
-                    />
-                  );
-                })}
+                {categoryData?.map((item, index) => (
+                  <FilterList
+                    key={index}
+                    item={item}
+                    onClick={() => handleCategoryFilter(item)}
+                  />
+                ))}
               </span>
             ) : (
               ""
             )}
           </div>
+
           <div className="relative">
             <span className="flex gap-2">
               <p className="text-[#989898] text-xl ">Author:</p>
@@ -87,35 +72,23 @@ const AllCourses = () => {
             </span>
             {authorToggle === true ? (
               <span className="absolute p-2 border-2 bg-white shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)] ">
-                {authorData?.map((item, index) => {
-                  return (
-                    <FilterList
-                      key={index}
-                      item={item}
-                      index={index}
-                      toggle={authorToggle}
-                      onClick={() => handleAuthorFilter(item, index, "author")}
-                    />
-                  );
-                })}
+                {authorData?.map((item, index) => (
+                  <FilterList
+                    key={index}
+                    item={item}
+                    onClick={() => handleAuthorFilter(item)}
+                  />
+                ))}
               </span>
             ) : (
               ""
             )}
           </div>
         </div>
-        <div className="flex items-center">
-          <input
-            placeholder="Find a Product"
-            className="h-8 px-4 py-1 border-2 "
-          />
-          <span className="p-[7px] border-2 bg-white hover:bg-[#f1f0f0] cursor-pointer ">
-            <IoSearch />
-          </span>
-        </div>
       </div>
+
       <div>
-        <Course courseData={filteredCoursesList} />
+        <Course courseData={filteredCourses} />
       </div>
     </div>
   );

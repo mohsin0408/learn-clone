@@ -36,9 +36,9 @@ const Header = ({ handlePathname }) => {
   return (
     <>
       <div className="flex items-center justify-center z-50 gap-5 px-10 md:px-20 sticky top-0 bg-[rgba(47,43,59,0.97)] ">
-        {headerData.map((obj, index) => (
+        {headerData?.map((obj, index) => (
           <>
-            <img src={obj.logo} />
+            <img src={obj.logo} alt="Logo" />
             <ul
               key={index}
               className="items-center justify-center hidden gap-5 cursor-pointer lg:flex">
@@ -55,6 +55,7 @@ const Header = ({ handlePathname }) => {
         ))}
 
         <FaCircleUser className="invisible text-3xl text-white lg:visible " />
+
         <RxHamburgerMenu
           className="visible text-3xl text-white lg:invisible"
           onClick={() => setToggle(!toggle)}
@@ -69,7 +70,7 @@ const Header = ({ handlePathname }) => {
             <li
               key={index}
               className="text-white bg-[rgba(47,43,59,0.97)] p-2 ">
-              <Link to={link.link} onClick={handleLinkClick}>
+              <Link to={link.link} onClick={() => setToggle(false)}>
                 {link.name}
               </Link>
             </li>
