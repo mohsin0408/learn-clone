@@ -5,7 +5,9 @@ import { Link, useLocation } from "react-router-dom";
 
 const Header = ({ handlePathname }) => {
   const [toggle, setToggle] = useState(false);
+  const [profileToggle, setProfileToggle] = useState(false);
   const location = useLocation();
+
   handlePathname(location.pathname);
 
   const headerData = {
@@ -15,6 +17,11 @@ const Header = ({ handlePathname }) => {
       { name: "All Courses", link: "/AllCourses" },
       { name: "Enrolled Courses", link: "#" },
       { name: "Community & Support", link: "#" },
+    ],
+    userData: [
+      { name: "Refer a Friend", link: "#" },
+      { name: "Settings", link: "#" },
+      { name: "Logout" },
     ],
   };
 
@@ -32,9 +39,35 @@ const Header = ({ handlePathname }) => {
               </li>
             ))}
           </ul>
+          <span>
+            <FaCircleUser
+              className="invisible text-3xl text-white lg:visible "
+              onClick={() => {
+                setProfileToggle(!profileToggle);
+              }}
+            />
 
-          <FaCircleUser className="invisible text-3xl text-white lg:visible " />
-
+            {profileToggle && (
+              <ul className=" absolute bg-[rgba(238,237,241,0.97)]">
+                {headerData.userData.map((item, index) => (
+                  <li>
+                    {index === 2 ? (
+                      <Link to={"/Login"} key={index} className="p-2 ">
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <Link
+                        to={item.link}
+                        className="flex p-2 border-b"
+                        key={index}>
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </span>
           <RxHamburgerMenu
             className="text-3xl text-white lg:invisible"
             onClick={() => setToggle(!toggle)}

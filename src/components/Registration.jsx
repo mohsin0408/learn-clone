@@ -87,9 +87,7 @@ const Registration = () => {
             By signing up, I agree to Academind's Privacy & Terms and
             Teachable's Privacy 7 Terms
           </p>
-          <Link to="/Login">
-            <Button text="Send Code" />
-          </Link>
+          <Button text="Send Code" />
           <p className="text-sm text-center text-gray-400">
             Already have an account? <Link to="/Login">Log in</Link>
           </p>
