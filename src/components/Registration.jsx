@@ -41,8 +41,8 @@ const Registration = () => {
     });
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-3 p-6">
-        <h3 className="text-3xl font-semibold">Sign up</h3>
+      <div className="flex flex-col items-center justify-center py-8">
+        <h3 className="mb-2 text-3xl font-semibold mt-7 ">Sign up</h3>
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">

@@ -19,8 +19,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-3 p-6 ">
-        <h3 className="text-3xl font-semibold">Log in</h3>
+      <div className="flex flex-col items-center justify-center gap-3 py-8 ">
+        <h3 className="text-3xl font-semibold my-7 ">Log in</h3>
         <form
           className="flex flex-col gap-5 w-[90%] sm:w-[50%] md:w-[23%]"
           onSubmit={handleLogin}>

@@ -14,7 +14,7 @@ const Course = ({ courseData }) => {
                 key={index}
                 className=" w-[300px] h-full flex flex-col bg-[#f7f7f7] shadow-[0px_1px_#d4baf3] 
           border border-[#d4baf3] rounded-[9px] overflow-hidden cursor-pointer lg:w-[380px] hover:border-[#9d5ee8] hover:border-2 ">
-                <img src={obj.img} className="object-cover " />
+                <img src={obj?.img} className="object-cover " />
                 <div className="flex flex-col justify-between h-full gap-10 px-4 py-5">
                   <div>
                     <span className=" text-[#5A00C7] text-lg font-bold ">

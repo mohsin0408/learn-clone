@@ -19,8 +19,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        {pathname === "/Login" || pathname === "/" ? null : (
-          <Header handlePathname={handlePathname} />
+        {pathname === "/Login" || pathname === "/" ? (
+          <Header handlePathname={handlePathname} showLinks={false} />
+        ) : (
+          <Header handlePathname={handlePathname} showLinks={true} />
         )}
         <Routes>
           <Route path="/" element={<Registration />} />
