@@ -56,11 +56,17 @@ const Header = ({ handlePathname, showLinks }) => {
                 {headerData.userData.map((item, index) => (
                   <li key={index}>
                     {index === 2 ? (
-                      <Link to={"/Login"} className="p-2">
+                      <Link
+                        to={"/Login"}
+                        className="p-2"
+                        onClick={() => setProfileToggle(false)}>
                         {item.name}
                       </Link>
                     ) : (
-                      <Link to={item.link} className="flex p-2 border-b">
+                      <Link
+                        to={item.link}
+                        className="flex p-2 border-b "
+                        onClick={() => setProfileToggle(false)}>
                         {item.name}
                       </Link>
                     )}
