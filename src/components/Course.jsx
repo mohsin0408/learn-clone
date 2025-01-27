@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 const Course = ({ courseData }) => {
   return (
     <>
-      <h3 className="text-center">Courses Included with Purchase</h3>
-      <div className="flex items-center justify-center">
+      <div className="flex flex-col items-center justify-between ">
+        <h3 className=" self-baseline pl-[372px]">
+          Courses Included with Purchase
+        </h3>
         <div className="grid items-center justify-center grid-cols-1 gap-5 p-4 md:grid-cols-2 ">
           {courseData?.map((obj, index) => {
             return (
