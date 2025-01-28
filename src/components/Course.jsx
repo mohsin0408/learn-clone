@@ -5,9 +5,9 @@ const Course = ({ courseData }) => {
   return (
     <>
       <div className="flex flex-col items-center justify-between ">
-        <h3 className=" self-baseline pl-[372px]">
+        <h2 className="my-5 text-2xl sm:text-3xl ">
           Courses Included with Purchase
-        </h3>
+        </h2>
         <div className="grid items-center justify-center grid-cols-1 gap-5 p-4 md:grid-cols-2 ">
           {courseData?.map((obj, index) => {
             return (

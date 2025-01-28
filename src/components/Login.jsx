@@ -31,7 +31,7 @@ const Login = () => {
               name="email"
               type="text"
               placeholder="you@email.com"
-              className="w-[310px] p-2 mt-2 border border-black rounded-lg "
+              className="w-[350px] px-4 py-2 mt-2 border border-black rounded-lg "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -40,7 +40,7 @@ const Login = () => {
             <input id="check" name="check" type="checkbox" />
             <p>Remember me</p>
           </div>
-          <Button text="Log in" />
+          <Button text="Log in" px="32px" py="8px" rounded="lg" />
           <p className="p-4 text-sm text-center text-gray-400 ">
             Doesn't have an Account? <Link to="/">Sign up</Link>
           </p>

@@ -11,7 +11,6 @@ const SingleCourse = ({ courseData }) => {
     ...course,
     btnText: ["Watch Promo", "Enroll in Course"],
   };
-  console.log("modifiedData", modifiedData);
 
   return (
     <div>

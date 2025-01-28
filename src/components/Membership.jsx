@@ -39,7 +39,7 @@ const Membership = () => {
             </span>
             <span className="mb-3 text-xs text-white ">{obj?.info}</span>
             <span>
-              <Button text={obj?.btnText} rounded="md" />
+              <Button text={obj?.btnText} rounded="md" px="32px" py="8px" />
             </span>
           </div>
         ))}

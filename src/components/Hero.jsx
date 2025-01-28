@@ -15,11 +15,11 @@ const Hero = ({ heroData }) => {
         <h1 className="text-[#FFC675] text-5xl font-semibold ">
           {heroData?.title}
         </h1>
-        <p className="mb-12 mx-[2px] sm:mx-[30px] xl:mx-[195px] text-3xl text-white pt-7  ">
+        <p className="mb-12 mx-[2px] sm:mx-[30px] xl:mx-[195px] text-3xl text-white pt-7 ">
           {heroData?.desc}
         </p>
 
-        <Button text={heroData?.btnText} rounded="full" px="4" />
+        <Button text={heroData?.btnText} rounded="full" px="30px" py="12px" />
       </div>
     </div>
   );

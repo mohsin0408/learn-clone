@@ -14,8 +14,8 @@ const Curriculum = () => {
   };
   return (
     <div className="flex flex-col items-center justify-center">
-      <h2>Course Curriculum</h2>
       <div>
+        <h2 className="my-5 text-3xl ">Course Curriculum</h2>
         <div className="px-4 py-3 bg-[#e8e8e8] ">{CurriculumData?.heading}</div>
         <div className="w-full text-base">
           {CurriculumData?.data?.map((item, index) => (
@@ -23,10 +23,10 @@ const Curriculum = () => {
               key={index}
               className="flex items-center cursor-pointer w-full justify-between py-3 px-4 bg-[#f0f0f0] border-b-2 border-b-white gap-20 hover:text-[#430094] hover:bg-[#e0d2f0] ">
               <span className="flex items-center gap-2 ">
-                <FaYoutube className="text-lg " />
+                <FaYoutube className="text-lg rou " />
                 {item}
               </span>
-              <Button text="Preview" rounded="2xl" px="12px" />
+              <Button text="Preview" rounded="md" px="12px" py="3px" />
             </div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Course from "./Course";
 import FilterList from "./FilterList";
+import { IoSearch } from "react-icons/io5";
 import { courseData, categoryData, authorData } from "../Data/Data";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory, setAuthor, filterCourses } from "./Store/Store";
@@ -39,7 +40,7 @@ const AllCourses = () => {
 
   return (
     <div className="bg-[#f1f0f0] flex flex-col items-center">
-      <div className="flex flex-col justify-between gap-2 p-5 md:flex-row w-[53%]">
+      <div className="flex flex-col items-center justify-between w-full sm:w-[53%] gap-2 p-5 md:flex-row">
         <div className="flex gap-3">
           <div className="relative">
             <span className="flex gap-2 ">
@@ -88,6 +89,15 @@ const AllCourses = () => {
               ""
             )}
           </div>
+        </div>
+        <div className="flex items-center ">
+          <input
+            placeholder="Find a Product"
+            className="h-8 px-4 py-1 border-2 "
+          />
+          <span className="p-[7px] border-2 bg-white hover:bg-[#f1f0f0] cursor-pointer ">
+            <IoSearch />
+          </span>
         </div>
       </div>
 

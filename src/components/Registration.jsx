@@ -45,7 +45,7 @@ const Registration = () => {
         <h3 className="mb-2 text-3xl font-semibold mt-7 ">Sign up</h3>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">
+          className="flex flex-col gap-5 w-[90%] sm:w-[50%] md:w-[23%] ">
           <div className="flex flex-col">
             <label htmlFor="fullName">Full Name</label>
             <input
@@ -56,7 +56,7 @@ const Registration = () => {
               value={values.fullName}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="w-[340px] p-2 mt-2 border border-black rounded-lg "
+              className="w-[350px] p-2 mt-2 border border-black rounded-lg "
             />
             {touched.fullName && errors.fullName ? (
               <div>{errors.fullName}</div>
@@ -72,7 +72,7 @@ const Registration = () => {
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              className="w-[340px] p-2 mt-2 border border-black rounded-lg "
+              className="w-[350px] p-2 mt-2 border border-black rounded-lg "
             />
             {touched.email && errors.email ? <div>{errors.email}</div> : null}
           </div>
@@ -87,7 +87,7 @@ const Registration = () => {
             By signing up, I agree to Academind's Privacy & Terms and
             Teachable's Privacy 7 Terms
           </p>
-          <Button text="Send Code" />
+          <Button text="Send Code" px="32px" py="8px" />
           <p className="text-sm text-center text-gray-400">
             Already have an account? <Link to="/Login">Log in</Link>
           </p>
