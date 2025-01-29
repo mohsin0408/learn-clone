@@ -5,7 +5,7 @@ const Membership = () => {
   const membershipData = [
     {
       id: "1",
-      heading: "Annual Membership",
+      heading: "Annual",
       desc: "Unlimited access to all current & future Academind courses",
       price: "$249/year",
       info: "This is a recurring payment, charged automatically on a yearly basis. You can cancel anytime from inside your user profile to avoid being charged again once your billing cycle ends. For more information, please contact Academind.",
@@ -13,7 +13,7 @@ const Membership = () => {
     },
     {
       id: "2",
-      heading: "Monthly Membership",
+      heading: "Monthly",
       desc: "Best choice! Full flexibility and unlimited course access!",
       price: "$25/month",
       info: "This is a recurring payment, charged automatically on a monthly basis. You can cancel anytime from inside your user profile to avoid being charged again once your billing cycle ends. For more information, please contact Academind.",
@@ -21,7 +21,7 @@ const Membership = () => {
     },
   ];
   return (
-    <div className="p-9 bg-[#3c374b] mt-3">
+    <div className="mt-3 p-9 bg-[#3c374b] ">
       <h2 className="text-center text-[#ffc675] font-bold text-3xl mt-5 mb-10 ">
         Join Now and Become a Pro Member!
       </h2>
@@ -29,10 +29,13 @@ const Membership = () => {
         {membershipData.map((obj, index) => (
           <div
             key={index}
-            className="flex flex-col p-8 text-center border border-black  w-full sm:w-[48%] md:w-[28%] bg-[#2e2b3b] border-none shadow-xl rounded-xl ">
-            <span className="py-5 text-4xl font-bold text-center text-white ">
+            className="flex flex-col p-8 text-center border border-black w-full sm:w-[48%] md:w-[28%] bg-[#2e2b3b] border-none shadow-xl rounded-xl ">
+            <span className="pt-5 text-4xl font-bold text-center text-white ">
               {obj?.heading}
             </span>
+            <p className="pb-5 text-4xl font-bold text-center text-white ">
+              Membership
+            </p>
             <span className="mb-3 text-base text-white ">{obj?.desc}</span>
             <span className=" text-[#ffc675] text-5xl  font-bold leading-[85px] border-t border-[#ccc] ">
               {obj?.price}

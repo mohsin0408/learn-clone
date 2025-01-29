@@ -52,7 +52,7 @@ const Header = ({ handlePathname, showLinks }) => {
             )}
 
             {profileToggle && (
-              <ul className="absolute bg-[rgba(238,237,241,0.97)]">
+              <ul className=" absolute bg-[rgba(238,237,241,0.97)] hidden lg:block ">
                 {headerData.userData.map((item, index) => (
                   <li key={index}>
                     {index === 2 ? (
@@ -75,14 +75,17 @@ const Header = ({ handlePathname, showLinks }) => {
               </ul>
             )}
           </span>
-          <RxHamburgerMenu
-            className="text-3xl text-white lg:invisible"
-            onClick={() => setToggle(!toggle)}
-          />
+          {showLinks && (
+            <RxHamburgerMenu
+              className="text-3xl text-white lg:invisible"
+              onClick={() => setToggle(!toggle)}
+            />
+          )}
         </span>
       </div>
 
       {/* Hamburger Menu */}
+
       {toggle && (
         <ul className="fixed z-50 w-full bg-[rgba(47,43,59,0.97)] p-2">
           {headerData.links.map((link, index) => (
@@ -93,7 +96,37 @@ const Header = ({ handlePathname, showLinks }) => {
             </li>
           ))}
           <div className="p-2">
-            <FaCircleUser className="text-3xl text-white" />
+            <FaCircleUser
+              className="text-3xl text-white"
+              onClick={() => {
+                setProfileToggle(!profileToggle);
+              }}
+            />
+            {profileToggle && (
+              <ul className="absolute bg-[rgba(238,237,241,0.97)]">
+                {headerData.userData.map((item, index) => (
+                  <li key={index}>
+                    {index === 2 ? (
+                      <Link
+                        to={"/Login"}
+                        className="p-2"
+                        onClick={() => {
+                          setProfileToggle(false), setToggle(false);
+                        }}>
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <Link
+                        to={item.link}
+                        className="flex p-2 border-b "
+                        onClick={() => setProfileToggle(false)}>
+                        {item.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </ul>
       )}
