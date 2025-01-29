@@ -21,7 +21,7 @@ const Membership = () => {
     },
   ];
   return (
-    <div className="mt-3 p-9 bg-[#3c374b] ">
+    <div className=" p-9 bg-[#3c374b] ">
       <h2 className="text-center text-[#ffc675] font-bold text-3xl mt-5 mb-10 ">
         Join Now and Become a Pro Member!
       </h2>
