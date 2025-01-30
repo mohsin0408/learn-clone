@@ -3,7 +3,11 @@ import React from "react";
 const Goals = () => {
   const goalsData = {
     heading: "YOUR LEARNING EXPERIENCE",
+    secondHeading: "30 DAYS MONEY BACK GUARANTEE",
     desc: "You got the goal, we got the tools",
+    secondDesc:
+      "Achieve your goals with our top-quality courses or get a full refund if you're not happy with the membership. No questions asked within 30 days!",
+    singleImg: "https://www.filepicker.io/api/file/q3KvpMMTkubdjMWhTvLT",
     goalImg: [
       {
         img: "https://res.cloudinary.com/academind-gmbh/image/upload/f_auto,q_80/v1606912139/academind.com/site/courses-icon_u9emvz",
@@ -33,19 +37,34 @@ const Goals = () => {
   };
   return (
     <div>
-      <h2 className="text-3xl font-semibold text-center lg:text-4xl ">
-        {goalsData.heading}
-      </h2>
-      <p className="text-lg text-center font-extralight ">{goalsData.desc}</p>
-      <div className="grid items-center justify-center grid-cols-1 gap-5 p-5 lg:grid-cols-3">
-        {goalsData.goalImg.map((img, index) => (
-          <span
-            key={index}
-            className="flex flex-col items-center justify-center gap-5">
-            <img src={img.img} alt="goal" className="w-20 h-20" />
-            <p>{img.info}</p>
-          </span>
-        ))}
+      <div>
+        <h2 className="text-3xl font-semibold text-center lg:text-4xl ">
+          {goalsData.heading}
+        </h2>
+        <p className="text-lg text-center font-extralight ">{goalsData.desc}</p>
+        <div className="grid items-center justify-center grid-cols-1 gap-5 p-5 lg:grid-cols-3">
+          {goalsData.goalImg.map((img, index) => (
+            <span
+              key={index}
+              className="flex flex-col items-center justify-center gap-5">
+              <img src={img.img} alt="goal" className="w-20 h-20" />
+              <p>{img.info}</p>
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-5 p-5">
+        <img
+          src={goalsData.singleImg}
+          alt="goal"
+          className="object-cover w-[200px] h-[200px]  "
+        />
+        <h2 className="text-3xl font-semibold text-center lg:text-4xl ">
+          {goalsData.secondHeading}
+        </h2>
+        <p className="text-lg text-center font-extralight ">
+          {goalsData.secondDesc}
+        </p>
       </div>
     </div>
   );

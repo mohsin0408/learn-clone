@@ -9,6 +9,7 @@ import { courseData } from "./Data/Data";
 import Header from "../src/components/Header";
 import { Provider } from "react-redux";
 import store from "../src/components/Store/Store";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [pathname, setPathname] = useState(null);
@@ -34,6 +35,11 @@ const App = () => {
           />
           <Route path="/AllCourses" element={<AllCourses />} />
         </Routes>
+        {pathname === "/Login" || pathname === "/" ? (
+          <Footer handlePathname={handlePathname} showLinks={false} />
+        ) : (
+          <Footer handlePathname={handlePathname} showLinks={true} />
+        )}
       </Router>
     </Provider>
   );
