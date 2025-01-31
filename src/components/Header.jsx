@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
@@ -8,7 +8,9 @@ const Header = ({ handlePathname, showLinks }) => {
   const [profileToggle, setProfileToggle] = useState(false);
   const location = useLocation();
 
-  handlePathname(location?.pathname);
+  useEffect(() => {
+    handlePathname(location?.pathname);
+  }, [location, handlePathname]);
 
   const headerData = {
     logo: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=height:60/https://cdn.filestackcontent.com/QaXgiMolT9eAmFXmB8VY",
