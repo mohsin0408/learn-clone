@@ -29,7 +29,7 @@ const Header = ({ handlePathname, showLinks }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between h-16 z-50 gap-5 px-10 md:px-44 sticky top-0 bg-[rgba(47,43,59,0.97)]">
+      <div className="flex items-center justify-between h-16 z-50 gap-5 px-10 md:px-32 sticky top-0 bg-[rgba(47,43,59,0.97)]">
         <img src={headerData.logo} alt="logo" />
         <span className="flex gap-5">
           {showLinks && (
