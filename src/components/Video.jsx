@@ -15,6 +15,9 @@ const Video = () => {
         <p className="mb-5 text-lg text-center font-extralight ">
           {videoData.desc}
         </p>
+        {/* <video height="500" controls>
+          <source src={videoData.videoUrl} type="video/mp4" />
+        </video> */}
         <iframe
           height="500"
           src={videoData.videoUrl}

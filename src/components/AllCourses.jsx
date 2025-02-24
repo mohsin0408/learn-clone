@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Course from "./Course";
 import FilterList from "./FilterList";
 import { IoSearch } from "react-icons/io5";

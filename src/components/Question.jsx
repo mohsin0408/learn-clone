@@ -44,7 +44,7 @@ const Question = () => {
           return (
             <div
               key={id}
-              className="rounded-md w-[100%] sm:w-[485px] p-4 border-2 ">
+              className="rounded-md w-[100%] sm:w-[715px] p-4 border-2 ">
               <div
                 onClick={() => setIsActive(!isActive)}
                 className="flex items-center justify-between cursor-pointer">

@@ -10,6 +10,7 @@ const Hero = ({ heroData }) => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: " cover ",
+        height: "475px",
       }}>
       <div className="relative z-10 text-center sm:w-[100%] lg:w-[75%] ">
         <h1 className="text-[#FFC675] px-1 text-5xl font-semibold ">

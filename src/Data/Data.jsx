@@ -73,4 +73,28 @@ const authorData = [
   "Max & Manuel",
 ];
 
-export { courseData, categoryData, authorData, heroData };
+const singleCourseData = {
+  videoUrl: "https://player.hotmart.com/embed/4qXbXN5wZv",
+};
+
+const CourseInfoData = {
+  heading:
+    "This is THE course developers should take to leverage AI efficiently!",
+  paraOne:
+    "AI is not a threat—it’s an incredibly powerful tool that can help you become an even more efficient and productive developer. While AI can generate code snippets and assist with routine tasks, it still needs your developer knowledge to create safe, reliable and complex applications. This course is all about teaching you how to combine your developer skills with AI tools to boost your developer productivity.",
+  paraTwo:
+    "By learning how to use AI tools like GitHub Copilot and Cursor AI efficiently, you can make routine coding tasks faster and easier, leaving you more time to focus on the most important and creative aspects of development. This course shows you exactly how to do that.",
+  paraThree:
+    "You’ll discover how to integrate AI seamlessly into your workflow, ensuring that it complements your knowledge without replacing the essential role you play as a developer. AI is here to enhance, not replace, your skills.",
+  paraFour:
+    "Through practical demos with GitHub Copilot, Cursor AI and external services like ChatGPT, you’ll learn how to leverage AI to improve your coding speed, enhance productivity, and solve complex challenges more efficiently. Whether you’re just starting out or already have experience, this course will teach you how to use these tools to your advantage.",
+};
+
+export {
+  courseData,
+  categoryData,
+  authorData,
+  heroData,
+  singleCourseData,
+  CourseInfoData,
+};
