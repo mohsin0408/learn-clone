@@ -7,6 +7,7 @@ import Question from "./Question";
 import { courseData, heroData } from "../Data/Data";
 import Video from "./video";
 import Goals from "./Goals";
+import MoneyBack from "./MoneyBack";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Hero heroData={heroData} />
       <Video />
       <Goals />
+      <MoneyBack />
       <Membership />
       <Course courseData={courseData?.data} />
       <Review />
