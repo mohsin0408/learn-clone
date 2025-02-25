@@ -6,10 +6,9 @@ const CourseInfo = () => {
     <div className="flex flex-col items-center justify-center ">
       <div className=" flex flex-col gap-4 w-[50%] ">
         <h2>{CourseInfoData?.heading}</h2>
-        <p>{CourseInfoData?.paraOne}</p>
-        <p>{CourseInfoData?.paraTwo}</p>
-        <p>{CourseInfoData?.paraThree}</p>
-        <p>{CourseInfoData?.paraFour}</p>
+        {CourseInfoData?.para?.map((item) => {
+          return <p>{item}</p>;
+        })}
       </div>
     </div>
   );
