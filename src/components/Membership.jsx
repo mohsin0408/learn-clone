@@ -29,7 +29,7 @@ const Membership = () => {
         {membershipData.map((obj, index) => (
           <div
             key={index}
-            className="flex flex-col p-8 text-center border border-black w-full sm:w-[48%] md:w-[28%] bg-[#2e2b3b] border-none shadow-xl rounded-xl ">
+            className="flex flex-col p-8 text-center border border-black w-full h-[447px] sm:w-[48%] md:w-[34%] bg-[#2e2b3b] border-none shadow-xl rounded-xl ">
             <span className="pt-5 text-4xl font-bold text-center text-white ">
               {obj?.heading}
             </span>

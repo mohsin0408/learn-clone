@@ -5,6 +5,16 @@ const heroData = {
   img: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
 };
 
+const CurriculumData = {
+  heading: "Getting Started",
+  data: [
+    "Welcome To The Course! (2:09)",
+    "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+    "Course Focus: AI Programming Tools & Beyond  (1:47)",
+    "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+  ],
+};
+
 const courseData = {
   heading: "Courses Included with Purchase",
   data: [
@@ -35,6 +45,18 @@ const courseData = {
         "Real-World Practice Project: I’ll walk you through creating a REST API from scratch using AI tools. From planning and structuring the app to generating code, implementing features and fixing errors, you’ll see how AI tools can assist every step of the way.",
         "Prompt Engineering Essentials: Learn how to fine-tune your prompts to get the best outputs from AI, helping you avoid common pitfalls and optimize efficiency.",
         "Debugging and Troubleshooting with AI: See how AI tools can assist with error detection, fixing bugs and improving your code’s overall quality.",
+      ],
+      firstContent: [
+        "Welcome To The Course! (2:09)",
+        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+        "Course Focus: AI Programming Tools & Beyond  (1:47)",
+        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+      ],
+      secondContent: [
+        "Introducing the course",
+        "About the course",
+        "Exploring the course",
+        "Mastering the course",
       ],
     },
     {
@@ -149,38 +171,6 @@ const authorData = [
   "Max & Manuel",
 ];
 
-// const CourseInfoData = {
-//   videoUrl: "https://player.hotmart.com/embed/4qXbXN5wZv",
-//   heading:
-//     "This is The course developers should take to leverage AI efficiently!",
-//   secondHeading: "What’s in this course?",
-//   para: [
-//     "AI is not a threat—it’s an incredibly powerful tool that can help you become an even more efficient and productive developer. While AI can generate code snippets and assist with routine tasks, it still needs your developer knowledge to create safe, reliable and complex applications. This course is all about teaching you how to combine your developer skills with AI tools to boost your developer productivity.",
-//     "By learning how to use AI tools like GitHub Copilot and Cursor AI efficiently, you can make routine coding tasks faster and easier, leaving you more time to focus on the most important and creative aspects of development. This course shows you exactly how to do that.",
-//     "You’ll discover how to integrate AI seamlessly into your workflow, ensuring that it complements your knowledge without replacing the essential role you play as a developer. AI is here to enhance, not replace, your skills.",
-//     "Through practical demos with GitHub Copilot, Cursor AI and external services like ChatGPT, you’ll learn how to leverage AI to improve your coding speed, enhance productivity, and solve complex challenges more efficiently. Whether you’re just starting out or already have experience, this course will teach you how to use these tools to your advantage.",
-//   ],
-//   about: [
-//     "Introduction to GitHub Copilot: Learn what GitHub Copilot is. Explore its core features like code suggestions, chat and contextual code assistance.",
-//     "Advanced GitHub Copilot Usage: Dive into more advanced features such as generating unit tests, configuring chat settings and understanding how to prompt the AI for more complex tasks.",
-//     "Mastering Cursor AI: Discover how Cursor helps with code completion, chat, Cursor Composer and smart suggestions to make coding faster and more intuitive.",
-//     "External AI Tools: Learn how to integrate external services like ChatGPT into your workflow to streamline tasks like project planning, researching and even asset generation.",
-//     "Real-World Practice Project: I’ll walk you through creating a REST API from scratch using AI tools. From planning and structuring the app to generating code, implementing features and fixing errors, you’ll see how AI tools can assist every step of the way.",
-//     "Prompt Engineering Essentials: Learn how to fine-tune your prompts to get the best outputs from AI, helping you avoid common pitfalls and optimize efficiency.",
-//     "Debugging and Troubleshooting with AI: See how AI tools can assist with error detection, fixing bugs and improving your code’s overall quality.",
-//   ],
-// };
-
-const CurriculumData = {
-  heading: "Getting Started",
-  data: [
-    "Welcome To The Course! (2:09)",
-    "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
-    "Course Focus: AI Programming Tools & Beyond  (1:47)",
-    "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
-  ],
-};
-
 const goalsData = {
   heading: "YOUR LEARNING EXPERIENCE",
   secondHeading: "30 DAYS MONEY BACK GUARANTEE",
@@ -232,7 +222,6 @@ export {
   categoryData,
   authorData,
   heroData,
-  // CourseInfoData,
   CurriculumData,
   goalsData,
   InstructorData,

@@ -20,6 +20,7 @@ const Home = () => {
       <Course courseData={courseData?.data} />
       <Review />
       <Question />
+      <Membership />
     </>
   );
 };
