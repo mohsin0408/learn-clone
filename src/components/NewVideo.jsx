@@ -1,6 +1,6 @@
 import React from "react";
 
-const video = () => {
+const NewVideo = () => {
   const videoData = {
     heading: "LEARN TO CODE & BOOST YOUR CAREER",
     desc: "Master coding from fundamentals to advanced topics in real-world projects! Earn certificates to showcase your progress and achievements!",
@@ -16,8 +16,8 @@ const video = () => {
           {videoData.desc}
         </p>
         {/* <video height="500" controls>
-          <source src={videoData.videoUrl} type="video/mp4" />
-        </video> */}
+              <source src={videoData.videoUrl} type="video/mp4" />
+            </video> */}
         <iframe
           height="500"
           src={videoData?.videoUrl}
@@ -27,4 +27,4 @@ const video = () => {
   );
 };
 
-export default video;
+export default NewVideo;
