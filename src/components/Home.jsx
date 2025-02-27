@@ -5,7 +5,7 @@ import Course from "./Course";
 import Review from "./Review";
 import Question from "./Question";
 import { courseData, heroData } from "../Data/Data";
-import Video from "./video";
+import Video from "./Video";
 import Goals from "./Goals";
 import MoneyBack from "./MoneyBack";
 
