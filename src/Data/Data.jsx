@@ -5,16 +5,6 @@ const heroData = {
   img: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
 };
 
-const CurriculumData = {
-  heading: "Getting Started",
-  data: [
-    "Welcome To The Course! (2:09)",
-    "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
-    "Course Focus: AI Programming Tools & Beyond  (1:47)",
-    "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
-  ],
-};
-
 const courseData = {
   heading: "Courses Included with Purchase",
   data: [
@@ -46,12 +36,14 @@ const courseData = {
         "Prompt Engineering Essentials: Learn how to fine-tune your prompts to get the best outputs from AI, helping you avoid common pitfalls and optimize efficiency.",
         "Debugging and Troubleshooting with AI: See how AI tools can assist with error detection, fixing bugs and improving your code’s overall quality.",
       ],
+      firstHead: "Getting Started",
       firstContent: [
         "Welcome To The Course! (2:09)",
         "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
         "Course Focus: AI Programming Tools & Beyond  (1:47)",
         "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
       ],
+      secondHead: "Into the Course",
       secondContent: [
         "Introducing the course",
         "About the course",
@@ -87,6 +79,20 @@ const courseData = {
         "Prompt Engineering Essentials: Learn how to fine-tune your prompts to get the best outputs from AI, helping you avoid common pitfalls and optimize efficiency.",
         "Debugging and Troubleshooting with AI: See how AI tools can assist with error detection, fixing bugs and improving your code’s overall quality.",
       ],
+      firstHead: "Getting Started",
+      firstContent: [
+        "Welcome To The Course! (2:09)",
+        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+        "Course Focus: AI Programming Tools & Beyond  (1:47)",
+        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+      ],
+      secondHead: "Into the Course",
+      secondContent: [
+        "Introducing the course",
+        "About the course",
+        "Exploring the course",
+        "Mastering the course",
+      ],
     },
     {
       id: "3",
@@ -116,6 +122,20 @@ const courseData = {
         "Prompt Engineering Essentials: Learn how to fine-tune your prompts to get the best outputs from AI, helping you avoid common pitfalls and optimize efficiency.",
         "Debugging and Troubleshooting with AI: See how AI tools can assist with error detection, fixing bugs and improving your code’s overall quality.",
       ],
+      firstHead: "Getting Started",
+      firstContent: [
+        "Welcome To The Course! (2:09)",
+        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+        "Course Focus: AI Programming Tools & Beyond  (1:47)",
+        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+      ],
+      secondHead: "Into the Course",
+      secondContent: [
+        "Introducing the course",
+        "About the course",
+        "Exploring the course",
+        "Mastering the course",
+      ],
     },
     {
       id: "4",
@@ -144,6 +164,20 @@ const courseData = {
         "Real-World Practice Project: I’ll walk you through creating a REST API from scratch using AI tools. From planning and structuring the app to generating code, implementing features and fixing errors, you’ll see how AI tools can assist every step of the way.",
         "Prompt Engineering Essentials: Learn how to fine-tune your prompts to get the best outputs from AI, helping you avoid common pitfalls and optimize efficiency.",
         "Debugging and Troubleshooting with AI: See how AI tools can assist with error detection, fixing bugs and improving your code’s overall quality.",
+      ],
+      firstHead: "Getting Started",
+      firstContent: [
+        "Welcome To The Course! (2:09)",
+        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+        "Course Focus: AI Programming Tools & Beyond  (1:47)",
+        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+      ],
+      secondHead: "Into the Course",
+      secondContent: [
+        "Introducing the course",
+        "About the course",
+        "Exploring the course",
+        "Mastering the course",
       ],
     },
   ],
@@ -222,7 +256,6 @@ export {
   categoryData,
   authorData,
   heroData,
-  CurriculumData,
   goalsData,
   InstructorData,
 };
