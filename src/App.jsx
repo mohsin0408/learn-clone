@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import AllCourses from "./components/AllCourses";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import SingleCourse from "./components/SingleCourse";
 import { courseData } from "./Data/Data";
@@ -22,13 +17,14 @@ const App = () => {
   const handlePathname = (name) => {
     setPathname(name);
   };
-
-  const params = useParams();
+  console.log(pathname);
 
   return (
     <Provider store={store}>
       <Router>
-        {pathname === "/Login" || pathname === "/" ? (
+        {pathname?.split("/").pop() ||
+        pathname === "Dashboard" ? null : pathname === "/Login" ||
+          pathname === "/" ? (
           <Header handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Header handlePathname={handlePathname} showLinks={true} />
@@ -42,9 +38,14 @@ const App = () => {
             element={<SingleCourse courseData={courseData?.data} />}
           />
           <Route path="/AllCourses" element={<AllCourses />} />
-          <Route path="/course/:slug/Dashboard" element={<Dashboard />} />
+          <Route
+            path="/course/:slug/Dashboard"
+            element={<Dashboard handlePathname={handlePathname} />}
+          />
         </Routes>
-        {pathname === "/Login" || pathname === "/" ? (
+        {pathname?.split("/").pop() ||
+        pathname === "Dashboard" ? null : pathname === "/Login" ||
+          pathname === "/" ? (
           <Footer handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Footer handlePathname={handlePathname} showLinks={true} />
