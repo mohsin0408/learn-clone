@@ -22,9 +22,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        {pathname?.split("/").pop() ||
-        pathname === "Dashboard" ? null : pathname === "/Login" ||
-          pathname === "/" ? (
+        {pathname === "/Login" || pathname === "/" ? (
           <Header handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Header handlePathname={handlePathname} showLinks={true} />
@@ -43,9 +41,7 @@ const App = () => {
             element={<Dashboard handlePathname={handlePathname} />}
           />
         </Routes>
-        {pathname?.split("/").pop() ||
-        pathname === "Dashboard" ? null : pathname === "/Login" ||
-          pathname === "/" ? (
+        {pathname === "/Login" || pathname === "/" ? (
           <Footer handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Footer handlePathname={handlePathname} showLinks={true} />

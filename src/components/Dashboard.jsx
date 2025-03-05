@@ -23,43 +23,56 @@ const Dashboard = ({ handlePathname }) => {
     handlePathname(lastPart);
   }, [lastPart, handlePathname]);
   return (
-    <div className="flex items-center justify-center w-full ">
-      <div className="w-[380px] ">
-        <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white ">
+    <div>
+      <div className="flex">
+        <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white w-[405px] ">
           <SlHome />
           <IoSettingsOutline />
         </div>
-        <div className="overflow-y-scroll ">
-          {courseObj?.map((obj) => (
-            <>
-              <p className="px-4 py-3 text-lg font-semibold ">
-                {obj?.firstHead}
-              </p>
-              <div>
-                {obj?.firstContent.map((item) => (
-                  <div className="flex hover:bg-[#e0d2f0] p-3 ">
-                    <FaRegCircle className="text-3xl" />
-                    <LuTvMinimalPlay className="text-3xl" />
-                    <p className="text-sm">{item}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="px-4 py-3 text-lg font-semibold ">
-                {obj?.secondHead}
-              </p>
-              <p>
-                {obj?.secondContent.map((item) => (
-                  <div className="flex items-center gap-4 p-2">
-                    <LuTvMinimalPlay />
-                    {item}
-                  </div>
-                ))}
-              </p>
-            </>
-          ))}
+        <div className="w-4/5 h-16 p-3 text-2xl text-white bg-black ">
+          plmkinjuhbvgy
         </div>
       </div>
-      <div className="w-4/5 bg-red-300 ">plmnbc</div>
+      <div className=" w-[380px] h-[900px] ">
+        {courseObj?.map((obj) => (
+          <div className="overflow-y-scroll h-96 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+            <p className="px-4 py-3 text-lg font-semibold ">{obj?.firstHead}</p>
+            <div>
+              {obj?.firstContent.map((item) => (
+                <div className=" hover:bg-[#e0d2f0] p-3 flex items-center gap-2 ">
+                  <span className="text-2xl">
+                    <FaRegCircle />
+                  </span>
+                  <span className="flex items-center justify-center gap-1 text-2xl ">
+                    <span>
+                      <LuTvMinimalPlay />
+                    </span>
+                    <p className="text-base">{item}</p>
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="px-4 py-3 text-lg font-semibold ">
+              {obj?.secondHead}
+            </p>
+            <p>
+              {obj?.secondContent.map((item) => (
+                <div className="flex items-center gap-4 p-2 hover:bg-[#e0d2f0] ">
+                  <span className="text-2xl">
+                    <FaRegCircle />
+                  </span>
+                  <span className="flex items-center justify-center gap-1 text-2xl ">
+                    <span>
+                      <LuTvMinimalPlay />
+                    </span>
+                    <p className="text-base">{item}</p>
+                  </span>
+                </div>
+              ))}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
