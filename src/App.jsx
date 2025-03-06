@@ -17,7 +17,6 @@ const App = () => {
   const handlePathname = (name) => {
     setPathname(name);
   };
-  console.log(pathname);
 
   return (
     <Provider store={store}>

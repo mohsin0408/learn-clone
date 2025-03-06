@@ -18,8 +18,6 @@ const AllCourses = () => {
     useState(category);
   const [currentSelectedAuthor, setCurrentSelectedAuthor] = useState(author);
 
-  console.log(filteredCourses);
-
   const handleCategoryFilter = (item, index) => {
     console.log(item, author, courseData, index, "item1");
     setCurrentSelectedCategory(item);
@@ -27,8 +25,6 @@ const AllCourses = () => {
     dispatch(filterCourses(item, author, courseData));
     setCategoryToggle(!categoryToggle);
   };
-
-  console.log("help me");
 
   const handleAuthorFilter = (item, index) => {
     console.log(item, category, courseData, index, "item");

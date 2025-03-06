@@ -32,7 +32,7 @@ const Curriculum = () => {
                             <div>
                               <FaYoutube className="text-2xl" />
                             </div>
-                            {item}
+                            {item?.name}
                           </span>
                           <Button
                             text="Preview"

@@ -38,10 +38,25 @@ const courseData = {
       ],
       firstHead: "Getting Started",
       firstContent: [
-        "Welcome To The Course! (2:09)",
-        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
-        "Course Focus: AI Programming Tools & Beyond  (1:47)",
-        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+        {
+          name: "Welcome To The Course! (2:09)",
+          vidSrc: "https://player.hotmart.com/embed/4qXbXN5wZv",
+        },
+        {
+          name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
       ],
       secondHead: "Into the Course",
       secondContent: [
@@ -81,10 +96,25 @@ const courseData = {
       ],
       firstHead: "Getting Started",
       firstContent: [
-        "Welcome To The Course! (2:09)",
-        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
-        "Course Focus: AI Programming Tools & Beyond  (1:47)",
-        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+        {
+          name: "Welcome To The Course! (2:09)",
+          vidSrc: "https://player.hotmart.com/embed/4qXbXN5wZv",
+        },
+        {
+          name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
       ],
       secondHead: "Into the Course",
       secondContent: [
@@ -124,10 +154,25 @@ const courseData = {
       ],
       firstHead: "Getting Started",
       firstContent: [
-        "Welcome To The Course! (2:09)",
-        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
-        "Course Focus: AI Programming Tools & Beyond  (1:47)",
-        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+        {
+          name: "Welcome To The Course! (2:09)",
+          vidSrc: "https://player.hotmart.com/embed/4qXbXN5wZv",
+        },
+        {
+          name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
       ],
       secondHead: "Into the Course",
       secondContent: [
@@ -167,10 +212,25 @@ const courseData = {
       ],
       firstHead: "Getting Started",
       firstContent: [
-        "Welcome To The Course! (2:09)",
-        "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
-        "Course Focus: AI Programming Tools & Beyond  (1:47)",
-        "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+        {
+          name: "Welcome To The Course! (2:09)",
+          vidSrc: "https://player.hotmart.com/embed/4qXbXN5wZv",
+        },
+        {
+          name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
+        {
+          name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
+          vidSrc:
+            "https://player.hotmart.com/4be101ff-4047-4394-ab45-058caeb82567",
+        },
       ],
       secondHead: "Into the Course",
       secondContent: [
