@@ -9,11 +9,13 @@ import { FaRegCircle } from "react-icons/fa";
 
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
+
   const courseObj = courseData?.data?.filter(
     (course) => course.slug === params.slug
   );
-  const [videoSrcs, setVideoSrcs] = useState();
-  console.log(videoSrcs, "videoSrcs");
+  const [videoSrcs, setVideoSrcs] = useState(null);
+  const [name, setName] = useState(null);
+
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -23,6 +25,12 @@ const Dashboard = ({ handlePathname }) => {
   useEffect(() => {
     handlePathname(lastPart);
   }, [lastPart, handlePathname]);
+
+  const handleVideoSrcs = (videoSrc, name) => {
+    setVideoSrcs(videoSrc);
+    setName(name);
+  };
+
   return (
     <div>
       <div className="flex">
@@ -36,34 +44,41 @@ const Dashboard = ({ handlePathname }) => {
       </div>
       <div className="flex">
         <div className=" w-[380px] h-[550px] ">
-          {courseObj?.map((obj) => (
-            <div className="overflow-y-scroll h-[32rem] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+          {courseObj?.map((obj, index) => (
+            <div
+              key={index}
+              className="overflow-y-scroll w-[390px] h-[32rem] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
               <p className="px-4 py-3 text-lg font-semibold ">
                 {obj?.firstHead}
               </p>
               <div>
-                {obj?.firstContent.map((item) => (
-                  <div
-                    className=" hover:bg-[#c494ff] p-3 flex items-center gap-2 border-y "
-                    onClick={() => setVideoSrcs(item?.vidSrc)}>
-                    <span className="px-2 text-2xl border-r ">
-                      <FaRegCircle />
-                    </span>
-                    <span className="flex items-center justify-center gap-1 text-2xl ">
-                      <span>
-                        <LuTvMinimalPlay />
+                {obj?.firstContent.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className=" hover:bg-[#c494ff] p-3  flex items-center gap-2 border-y "
+                      onClick={() => handleVideoSrcs(item?.vidSrc, item?.name)}>
+                      <span className="px-2 text-2xl border-r ">
+                        <FaRegCircle />
                       </span>
-                      <p className="text-base">{item.name}</p>
-                    </span>
-                  </div>
-                ))}
+                      <span className="flex items-center justify-center gap-1 text-2xl ">
+                        <span>
+                          <LuTvMinimalPlay />
+                        </span>
+                        <p className="text-base">{item.name}</p>
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
               <p className="px-4 py-3 text-lg font-semibold ">
                 {obj?.secondHead}
               </p>
               <p>
-                {obj?.secondContent.map((item) => (
-                  <div className="flex items-center gap-4 p-3 hover:bg-[#e0d2f0] border-y ">
+                {obj?.secondContent.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-3 hover:bg-[#e0d2f0] border-y ">
                     <span className="text-2xl">
                       <FaRegCircle />
                     </span>
@@ -79,19 +94,25 @@ const Dashboard = ({ handlePathname }) => {
             </div>
           ))}
         </div>
-        <div>
-          {videoSrcs ? (
-            <video width="600" controls>
-              <source src={videoSrcs} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <p>Select a video to watch</p>
-          )}
-          {/* <video width="600" controls>
-            <source src={videoSrc} type="video/mp4" />
+        <div className="flex flex-col items-center justify-center">
+          <div>
+            <span className="flex items-center justify-center gap-1 text-2xl ">
+              <span>
+                <LuTvMinimalPlay />
+              </span>
+              <p className="text-base">{name}</p>
+            </span>
+          </div>
+          <video
+            src={videoSrcs}
+            width="50%"
+            height="50%"
+            autoPlay
+            muted
+            playsInline
+            controls>
             Your browser does not support the video tag.
-          </video> */}
+          </video>
         </div>
       </div>
     </div>
@@ -99,13 +120,3 @@ const Dashboard = ({ handlePathname }) => {
 };
 
 export default Dashboard;
-
-{
-  /* <iframe
-src={videoSrcs}
-width="100%"
-height="300"
-title="Course Video">
-jfefhvfe
-</iframe> */
-}

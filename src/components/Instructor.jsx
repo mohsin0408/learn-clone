@@ -15,8 +15,8 @@ const Instructor = () => {
             <h2>{InstructorData?.title}</h2>
           </div>
           <div>
-            {InstructorData?.para?.map((item) => (
-              <div>
+            {InstructorData?.para?.map((item, index) => (
+              <div key={index}>
                 <p className="text-lg font-extralight ">{item}</p>
               </div>
             ))}
