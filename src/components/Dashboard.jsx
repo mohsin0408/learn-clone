@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SlHome } from "react-icons/sl";
 import { IoSettingsOutline } from "react-icons/io5";
 import { courseData } from "../Data/Data";
@@ -9,6 +9,9 @@ import { FaRegCircle } from "react-icons/fa";
 
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
+  console.log(params);
+  
+  const navigate = useNavigate();
 
   const courseObj = courseData?.data?.filter(
     (course) => course.slug === params.slug
@@ -26,9 +29,10 @@ const Dashboard = ({ handlePathname }) => {
     handlePathname(lastPart);
   }, [lastPart, handlePathname]);
 
-  const handleVideoSrcs = (videoSrc, name) => {
+  const handleVideoSrcs = (videoSrc, name, id) => {
     setVideoSrcs(videoSrc);
     setName(name);
+    navigate(`${pathname}/${id}`);
   };
 
   return (
@@ -57,7 +61,9 @@ const Dashboard = ({ handlePathname }) => {
                     <div
                       key={index}
                       className=" hover:bg-[#c494ff] p-3  flex items-center gap-2 border-y "
-                      onClick={() => handleVideoSrcs(item?.vidSrc, item?.name)}>
+                      onClick={() =>
+                        handleVideoSrcs(item?.vidSrc, item?.name, item?.id)
+                      }>
                       <span className="px-2 text-2xl border-r ">
                         <FaRegCircle />
                       </span>

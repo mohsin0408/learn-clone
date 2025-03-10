@@ -39,6 +39,10 @@ const App = () => {
             path="/course/:slug/Dashboard"
             element={<Dashboard handlePathname={handlePathname} />}
           />
+          <Route
+            path="/course/:slug/Dashboard/:id"
+            element={<Dashboard handlePathname={handlePathname} />}
+          />
         </Routes>
         {pathname === "/Login" || pathname === "/" ? (
           <Footer handlePathname={handlePathname} showLinks={false} />
