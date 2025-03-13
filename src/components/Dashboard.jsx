@@ -10,7 +10,7 @@ import { FaRegCircle } from "react-icons/fa";
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
   console.log(params);
-  
+
   const navigate = useNavigate();
 
   const courseObj = courseData?.data?.filter(
@@ -80,7 +80,7 @@ const Dashboard = ({ handlePathname }) => {
               <p className="px-4 py-3 text-lg font-semibold ">
                 {obj?.secondHead}
               </p>
-              <p>
+              <div>
                 {obj?.secondContent.map((item, index) => (
                   <div
                     key={index}
@@ -96,7 +96,7 @@ const Dashboard = ({ handlePathname }) => {
                     </span>
                   </div>
                 ))}
-              </p>
+              </div>
             </div>
           ))}
         </div>
