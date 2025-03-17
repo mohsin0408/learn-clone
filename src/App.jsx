@@ -39,6 +39,7 @@ const App = () => {
             path="/course/:slug/Dashboard"
             element={<Dashboard handlePathname={handlePathname} />}
           />
+
           <Route
             path="/course/:slug/Dashboard/:id"
             element={<Dashboard handlePathname={handlePathname} />}
@@ -55,3 +56,10 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /* <Route
+  path="/course/:slug/Dashboard/:id"
+  element={<Dashboard handlePathname={handlePathname} />}
+/>; */
+}

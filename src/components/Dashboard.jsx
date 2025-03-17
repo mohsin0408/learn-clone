@@ -32,7 +32,7 @@ const Dashboard = ({ handlePathname }) => {
   const handleVideoSrcs = (videoSrc, name, id) => {
     setVideoSrcs(videoSrc);
     setName(name);
-    navigate(`${pathname}/${id}`);
+    navigate(`/course/${params.slug}/Dashboard/${id}`);
   };
 
   return (
