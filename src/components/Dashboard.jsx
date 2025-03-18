@@ -6,6 +6,7 @@ import { courseData } from "../Data/Data";
 import { useParams } from "react-router-dom";
 import { LuTvMinimalPlay } from "react-icons/lu";
 import { FaRegCircle } from "react-icons/fa";
+import { object } from "yup";
 
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
@@ -16,8 +17,17 @@ const Dashboard = ({ handlePathname }) => {
   const courseObj = courseData?.data?.filter(
     (course) => course.slug === params.slug
   );
-  const [videoSrcs, setVideoSrcs] = useState(null);
-  const [name, setName] = useState(null);
+
+  console.log(courseObj, "courseObj");
+
+  const contentObj = courseData?.data?.map((course) =>
+    course.firstContent?.find((content) => content.id === params.id)
+  );
+
+  console.log(contentObj, "contentObj");
+
+  const [videoSrcs, setVideoSrcs] = useState();
+  const [name, setName] = useState();
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -56,7 +66,7 @@ const Dashboard = ({ handlePathname }) => {
                 {obj?.firstHead}
               </p>
               <div>
-                {obj?.firstContent.map((item, index) => {
+                {obj?.firstContent?.map((item, index) => {
                   return (
                     <div
                       key={index}

@@ -105,21 +105,25 @@ const courseData = {
           name: "Welcome To The Course! (2:09)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "021",
         },
         {
           name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "022",
         },
         {
           name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "023",
         },
         {
           name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "024",
         },
       ],
       secondHead: "Into the Course",
@@ -164,21 +168,25 @@ const courseData = {
           name: "Welcome To The Course! (2:09)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "031",
         },
         {
           name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "032",
         },
         {
           name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "033",
         },
         {
           name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "034",
         },
       ],
       secondHead: "Into the Course",
@@ -223,21 +231,25 @@ const courseData = {
           name: "Welcome To The Course! (2:09)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "041",
         },
         {
           name: "Course Overview: What You'll Learn &amp; Achieve  (1:56)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "042",
         },
         {
           name: "Course Focus: AI Programming Tools & Beyond  (1:47)",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "043",
         },
         {
           name: "Understanding AI: Limitations, Costs &amp; Unpredictability  (2:19) ",
           vidSrc:
             "https://videos.pexels.com/video-files/2278095/2278095-hd_1920_1080_30fps.mp4",
+          id: "044",
         },
       ],
       secondContent: [

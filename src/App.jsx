@@ -56,10 +56,3 @@ const App = () => {
 };
 
 export default App;
-
-{
-  /* <Route
-  path="/course/:slug/Dashboard/:id"
-  element={<Dashboard handlePathname={handlePathname} />}
-/>; */
-}
