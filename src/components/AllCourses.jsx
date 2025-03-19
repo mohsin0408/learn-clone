@@ -4,7 +4,7 @@ import FilterList from "./FilterList";
 import { IoSearch } from "react-icons/io5";
 import { courseData, categoryData, authorData } from "../Data/Data";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory, setAuthor, filterCourses } from "./Store/Store";
+import { setCategory, setAuthor, filterCourses } from "./Store/Action";
 
 const AllCourses = () => {
   const dispatch = useDispatch();

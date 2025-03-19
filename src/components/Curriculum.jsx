@@ -26,9 +26,9 @@ const Curriculum = () => {
                 {obj?.firstContent?.map((item) => {
                   return (
                     <div className="w-full text-base">
-                      <Link to={`/course/${obj.slug}/Dashboard/${item.id}`}>
-                        <div className="flex items-center cursor-pointer w-full justify-between py-3 px-4 bg-[#f0f0f0] border-b-2 border-b-white gap-2 md:gap-20 hover:text-[#430094] hover:bg-[#e0d2f0] ">
-                          <span className="flex items-center gap-3 line-clamp-2 ">
+                      <Link to={`/course/${obj.slug}/Lectures/${item.id}`}>
+                        <div className="flex items-center cursor-pointer w-full justify-between py-3 px-4 bg-[#f0f0f0] border-b-2 border-b-white gap-2 md:gap-20 hover:text-[#430094] hover:bg-[#e0d2f0]">
+                          <span className="flex items-center gap-3 line-clamp-2">
                             <div>
                               <FaYoutube className="text-2xl" />
                             </div>

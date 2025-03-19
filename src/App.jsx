@@ -15,6 +15,8 @@ import Dashboard from "./components/Dashboard";
 const App = () => {
   const [pathname, setPathname] = useState(null);
   const handlePathname = (name) => {
+    console.log(pathname, "pathname");
+
     setPathname(name);
   };
 
@@ -36,12 +38,12 @@ const App = () => {
           />
           <Route path="/AllCourses" element={<AllCourses />} />
           <Route
-            path="/course/:slug/Dashboard"
+            path="/course/:slug/Lectures"
             element={<Dashboard handlePathname={handlePathname} />}
           />
 
           <Route
-            path="/course/:slug/Dashboard/:id"
+            path="/course/:slug/Lectures/:id"
             element={<Dashboard handlePathname={handlePathname} />}
           />
         </Routes>

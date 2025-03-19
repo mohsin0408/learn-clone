@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SlHome } from "react-icons/sl";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -6,28 +6,22 @@ import { courseData } from "../Data/Data";
 import { useParams } from "react-router-dom";
 import { LuTvMinimalPlay } from "react-icons/lu";
 import { FaRegCircle } from "react-icons/fa";
-import { object } from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { setVideoSrcs, setName } from "./Store/Action";
 
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
-  console.log(params);
 
+  console.log(params, "params");
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const videoSrcs = useSelector((state) => state.videoSrcs);
+  const name = useSelector((state) => state.name);
 
   const courseObj = courseData?.data?.filter(
     (course) => course.slug === params.slug
   );
-
-  console.log(courseObj, "courseObj");
-
-  const contentObj = courseData?.data?.map((course) =>
-    course.firstContent?.find((content) => content.id === params.id)
-  );
-
-  console.log(contentObj, "contentObj");
-
-  const [videoSrcs, setVideoSrcs] = useState();
-  const [name, setName] = useState();
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -35,15 +29,27 @@ const Dashboard = ({ handlePathname }) => {
   const pathParts = pathname.split("/");
   const lastPart = pathParts[pathParts.length - 1];
 
-  useEffect(() => {
-    handlePathname(lastPart);
-  }, [lastPart, handlePathname]);
-
   const handleVideoSrcs = (videoSrc, name, id) => {
-    setVideoSrcs(videoSrc);
-    setName(name);
-    navigate(`/course/${params.slug}/Dashboard/${id}`);
+    console.log(name, "name");
+
+    dispatch(setVideoSrcs(videoSrc));
+    dispatch(setName(name));
+    navigate(`/course/${params.slug}/Lectures/${id}`);
   };
+
+  useEffect(() => {
+    console.log("useEffect", params.slug);
+    console.log(courseObj, "courseObj");
+
+    const currentCourse = courseObj[0].firstContent.filter(
+      (item) => item.id === params.id
+    );
+
+    console.log(currentCourse[0].name, "curretn");
+    dispatch(setName(currentCourse[0].name));
+    dispatch(setVideoSrcs(currentCourse[0].vidSrc));
+    handlePathname(params.id);
+  }, []);
 
   return (
     <div>
