@@ -33,8 +33,6 @@ const setVideoSrcs = (videoSrcs) => {
 };
 
 const setName = (name) => {
-  console.log(name, "name");
-
   return {
     type: SET_NAME,
     payload: name,
@@ -49,8 +47,6 @@ const filterCourses = (category, author, courseData) => {
       const matchAuthor = author === "All" || author === course.tutor;
       return matchCategory && matchAuthor;
     });
-
-    console.log("Filtered Data:", filteredData);
 
     dispatch(setFilteredCourses(filteredData));
   };

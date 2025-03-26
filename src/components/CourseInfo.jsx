@@ -22,17 +22,19 @@ const CourseInfo = () => {
           </div>
           <div className="flex flex-col w-1/2">
             <h2>{courseObj[0]?.headings}</h2>
-            {courseObj[0]?.paras?.map((para) => (
-              <p>{para}</p>
-            ))}
+            <ul className="flex flex-col gap-5 ">
+              {courseObj[0]?.paras?.map((about) => (
+                <li>{about}</li>
+              ))}
+            </ul>
           </div>
           <div className="w-1/2">
             <h2>{courseObj[0]?.secondHeading}</h2>
-            {courseObj[0]?.about?.map((about) => (
-              <ul>
+            <ul className="flex flex-col gap-5 ">
+              {courseObj[0]?.about?.map((about) => (
                 <li>{about}</li>
-              </ul>
-            ))}
+              ))}
+            </ul>
           </div>
         </div>
       </div>

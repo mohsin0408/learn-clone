@@ -12,8 +12,6 @@ import { setVideoSrcs, setName } from "./Store/Action";
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
 
-  console.log(params, "params");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const videoSrcs = useSelector((state) => state.videoSrcs);
@@ -29,23 +27,25 @@ const Dashboard = ({ handlePathname }) => {
   const pathParts = pathname.split("/");
   const lastPart = pathParts[pathParts.length - 1];
 
-  const handleVideoSrcs = (videoSrc, name, id) => {
-    console.log(name, "name");
+  useEffect(() => {
+    handlePathname(lastPart);
+  }, [lastPart, handlePathname]);
 
+  const handleVideoSrcs = (videoSrc, name, id) => {
     dispatch(setVideoSrcs(videoSrc));
     dispatch(setName(name));
     navigate(`/course/${params.slug}/Lectures/${id}`);
   };
 
-  useEffect(() => {
-    console.log("useEffect", params.slug);
-    console.log(courseObj, "courseObj");
+  const handlePage = () => {
+    navigate("/AllCourses");
+  };
 
+  useEffect(() => {
     const currentCourse = courseObj[0].firstContent.filter(
       (item) => item.id === params.id
     );
 
-    console.log(currentCourse[0].name, "curretn");
     dispatch(setName(currentCourse[0].name));
     dispatch(setVideoSrcs(currentCourse[0].vidSrc));
     handlePathname(params.id);
@@ -55,7 +55,7 @@ const Dashboard = ({ handlePathname }) => {
     <div>
       <div className="flex">
         <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white w-[405px] ">
-          <SlHome />
+          <SlHome onClick={handlePage} />
           <IoSettingsOutline />
         </div>
         <div className="w-4/5 h-16 p-3 text-2xl text-white bg-black ">
