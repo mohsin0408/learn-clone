@@ -37,10 +37,6 @@ const Dashboard = ({ handlePathname }) => {
     navigate(`/course/${params.slug}/Lectures/${id}`);
   };
 
-  const handlePage = () => {
-    navigate("/AllCourses");
-  };
-
   useEffect(() => {
     const currentCourse = courseObj[0].firstContent.filter(
       (item) => item.id === params.id
@@ -55,7 +51,7 @@ const Dashboard = ({ handlePathname }) => {
     <div>
       <div className="flex">
         <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white w-[405px] ">
-          <SlHome onClick={handlePage} />
+          <SlHome onClick={() => navigate(`/course/${params.slug}`)} />
           <IoSettingsOutline />
         </div>
         <div className="w-4/5 h-16 p-3 text-2xl text-white bg-black ">
