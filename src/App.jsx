@@ -55,10 +55,7 @@ const AppWithRouter = () => {
         <Route path="/" element={<Registration />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Home" element={<Home />} />
-        <Route
-          path="/course/:slug"
-          element={<SingleCourse courseData={courseData?.data} />}
-        />
+        <Route path="/course/:slug" element={<SingleCourse />} />
         <Route path="/AllCourses" element={<AllCourses />} />
         <Route
           path="/course/:slug/Lectures"

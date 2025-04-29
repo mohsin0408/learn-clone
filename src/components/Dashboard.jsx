@@ -8,10 +8,10 @@ import { LuTvMinimalPlay } from "react-icons/lu";
 import { FaRegCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { setVideoSrcs, setName } from "./Store/Action";
+import Curriculum from "./Curriculum";
 
 const Dashboard = ({ handlePathname }) => {
   const params = useParams();
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const videoSrcs = useSelector((state) => state.videoSrcs);
@@ -37,21 +37,21 @@ const Dashboard = ({ handlePathname }) => {
     navigate(`/course/${params.slug}/Lectures/${id}`);
   };
 
-  useEffect(() => {
-    const currentCourse = courseObj[0].firstContent.filter(
-      (item) => item.id === params.id
-    );
+  // useEffect(() => {
+  //   const currentCourse = courseObj[0].firstContent.filter(
+  //     (item) => item.id === params.id
+  //   );
 
-    dispatch(setName(currentCourse[0].name));
-    dispatch(setVideoSrcs(currentCourse[0].vidSrc));
-    handlePathname(params.id);
-  }, []);
+  //   dispatch(setName(currentCourse[0].name));
+  //   dispatch(setVideoSrcs(currentCourse[0].vidSrc));
+  //   handlePathname(params.id);
+  // }, []);
 
   return (
     <div>
       <div className="flex">
         <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white w-[405px] ">
-          <SlHome onClick={() => navigate(`/course/${params.slug}`)} />
+          {/* <SlHome onClick={() => navigate(`/course/${params.slug}`)} /> */}
           <IoSettingsOutline />
         </div>
         <div className="w-4/5 h-16 p-3 text-2xl text-white bg-black ">
@@ -60,7 +60,8 @@ const Dashboard = ({ handlePathname }) => {
       </div>
       <div className="flex">
         <div className=" w-[380px] h-[550px] ">
-          {courseObj?.map((obj, index) => (
+          <Curriculum />
+          {/* {courseObj?.map((obj, index) => (
             <div
               key={index}
               className="overflow-y-scroll w-[390px] h-[32rem] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
@@ -110,7 +111,7 @@ const Dashboard = ({ handlePathname }) => {
                 ))}
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
         <div className="flex flex-col items-center justify-center">
           <div>

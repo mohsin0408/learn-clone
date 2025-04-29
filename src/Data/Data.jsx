@@ -1,8 +1,9 @@
 const heroData = {
   title: "The Academind Pro Membership",
-  desc: "Unlock unlimited learning with instant access to 50 courses and continuous updates.",
+  subtitle:
+    "Unlock unlimited learning with instant access to 50 courses and continuous updates.",
   btnText: "Get Full Access Now",
-  img: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
+  ImageBitmap: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
 };
 
 const courseData = {

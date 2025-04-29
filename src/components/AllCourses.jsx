@@ -88,7 +88,7 @@ const AllCourses = () => {
         </div>
         <div className="flex items-center ">
           <input
-            placeholder="Find a Product"
+            placeholder="Search by Title, Author or Category"
             className=" w-[300px] sm:w-[220px]  px-4 py-1 border-2  h-11"
           />
           <span className="py-[10px] px-[16px] text-lg h-11 border-2 bg-white hover:bg-[#f1f0f0] cursor-pointer ">

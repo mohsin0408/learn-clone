@@ -1,29 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaYoutube } from "react-icons/fa6";
 import Button from "./Button";
-import { courseData } from "../Data/Data";
+// import { courseData } from "../Data/Data";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Curriculum = () => {
-  const params = useParams();
-
-  const courseObj = courseData?.data?.filter(
-    (course) => course.slug === params.slug
-  );
+  const [data, setData] = useState("");
+  const { slug } = useParams();
+  useEffect(() => {
+    fetch(
+      `https://optimist-dev-backend.onrender.com/api/course-lectures/${slug}`
+    ).then((res) => res.json().then((data) => setData(data)));
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex flex-col gap-4 px-2 ">
         <h2 className="mt-5 text-3xl ">Course Curriculum</h2>
         <div className="">
-          {courseObj?.map((obj) => (
+          {data?.lectures?.courseCurriculumData?.map((obj) => (
             <>
-              <p className="px-4 py-3 bg-[#e8e8e8] text-lg font-semibold ">
-                {obj?.firstHead}
+              <p className="px-4 py-3 gap-4 bg-[#e8e8e8] text-lg font-semibold ">
+                {obj?.title}
               </p>
               <p>
-                {obj?.firstContent?.map((item) => {
+                {obj?.chapters?.map((item) => {
                   return (
                     <div className="w-full text-base">
                       <Link to={`/course/${obj.slug}/Lectures/${item.id}`}>
@@ -32,7 +34,7 @@ const Curriculum = () => {
                             <div>
                               <FaYoutube className="text-2xl" />
                             </div>
-                            {item?.name}
+                            {item?.title}
                           </span>
                           <Button
                             text="Preview"
@@ -50,7 +52,7 @@ const Curriculum = () => {
           ))}
         </div>
         <div className="">
-          {courseObj?.map((obj) => (
+          {/* {courseObj?.map((obj) => (
             <>
               <p className="px-4 py-3 bg-[#e8e8e8] text-lg font-semibold ">
                 {obj?.secondHead}
@@ -78,7 +80,7 @@ const Curriculum = () => {
                 })}
               </p>
             </>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

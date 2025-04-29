@@ -1,41 +1,37 @@
 import React from "react";
-import { courseData } from "../Data/Data";
-import { useParams } from "react-router-dom";
 
-const CourseInfo = () => {
-  const params = useParams();
-
-  let courseObj = courseData?.data?.filter(
-    (course) => course.slug === params.slug
-  );
+const CourseInfo = ({ infoData }) => {
+  console.log(infoData, "info");
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 ">
       <div>
         <div className="flex flex-col items-center w-full ">
-          <div className="w-1/2">
-            <iframe
-              height="500"
-              width="500"
-              src={courseObj[0]?.videoUrl}
-              className="w-full py-2"></iframe>
-          </div>
-          <div className="flex flex-col w-1/2">
-            <h2>{courseObj[0]?.headings}</h2>
-            <ul className="flex flex-col gap-5 ">
-              {courseObj[0]?.paras?.map((about) => (
-                <li>{about}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="w-1/2">
-            <h2>{courseObj[0]?.secondHeading}</h2>
-            <ul className="flex flex-col gap-5 ">
-              {courseObj[0]?.about?.map((about) => (
-                <li>{about}</li>
-              ))}
-            </ul>
-          </div>
+          <iframe
+            height="500"
+            width="500"
+            src={infoData?.course?.trailer}
+            className="w-full py-2"></iframe>
+        </div>
+
+        <div className="flex flex-col items-center justify-center ">
+          <ul className="flex flex-col w-1/2 gap-5 ">
+            {infoData?.course?.aboutCourse?.map((item, index) => {
+              return <li key={index}>{item}</li>;
+            })}
+          </ul>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <ul className="flex flex-col w-1/2 gap-5 ">
+            {infoData?.course?.courseContent?.map((item, index) => {
+              return (
+                <div key={index}>
+                  <li>{item?.topic}</li>
+                  <li>{item?.about}</li>
+                </div>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </div>

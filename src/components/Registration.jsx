@@ -28,16 +28,41 @@ const Registration = () => {
         email: "",
       },
       validate,
-      onSubmit: (values, action) => {
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-          values
-        );
-        const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-        existingUsers.push(values);
-        localStorage.setItem("users", JSON.stringify(existingUsers));
-        action.resetForm();
+      onSubmit: async (values, action) => {
+        try {
+          const response = await fetch(
+            "https://optimist-dev-backend.onrender.com/user/register",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(values),
+            }
+          );
+
+          const data = await response.json();
+
+          if (response.ok) {
+            console.log("Registration successful", data);
+            action.resetForm();
+          } else {
+            alert(data.message || "Registration failed");
+          }
+        } catch (error) {
+          console.error("Registration error:", error);
+          alert("An error occurred");
+        }
       },
+
+      // onSubmit: (values, action) => {
+      //   console.log(
+      //     "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
+      //     values
+      //   );
+      //   const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+      //   existingUsers.push(values);
+      //   localStorage.setItem("users", JSON.stringify(existingUsers));
+      //   action.resetForm();
+      // },
     });
   return (
     <>

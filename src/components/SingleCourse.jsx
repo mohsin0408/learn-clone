@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Curriculum from "./Curriculum";
 import Hero from "./Hero";
 import { useParams } from "react-router-dom";
@@ -9,19 +9,27 @@ import Question from "./Question";
 import Membership from "./Membership";
 import Instructor from "./Instructor";
 
-const SingleCourse = ({ courseData }) => {
-  const params = useParams();
-  const course = courseData?.find((course) => course.slug === params.slug);
+const SingleCourse = () => {
+  const [data, setData] = useState("");
+  const { slug } = useParams();
 
-  const modifiedData = {
-    ...course,
-    btnText: ["Watch Promo", "Enroll in Course"],
-  };
+  useEffect(() => {
+    fetch(`https://optimist-dev-backend.onrender.com/api/course/${slug}`).then(
+      (res) => res.json().then((data) => setData(data))
+    );
+  }, [slug]);
+
+  console.log(data, "data");
+
+  // const modifiedData = {
+  //   ...course,
+  //   btnText: ["Watch Promo", "Enroll in Course"],
+  // };
 
   return (
     <div>
-      <Hero heroData={modifiedData} />
-      <CourseInfo />
+      <Hero heroData={data} />
+      <CourseInfo infoData={data} />
       <Curriculum />
       <Review />
       <MoneyBack />

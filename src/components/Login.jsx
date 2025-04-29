@@ -6,14 +6,41 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+  //   const user = storedUsers.find((user) => user.email === email);
+  //   if (user) {
+  //     navigate("/Home");
+  //   } else {
+  //     alert("invalid");
+  //   }
+  // };
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const user = storedUsers.find((user) => user.email === email);
-    if (user) {
-      navigate("/Home");
-    } else {
-      alert("invalid");
+    try {
+      const response = await fetch(
+        "https://optimist-dev-backend.onrender.com/user/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Login successful", data);
+        // Optionally store token: localStorage.setItem("token", data.token)
+        navigate("/Home");
+      } else {
+        alert(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred");
     }
   };
 
