@@ -15,10 +15,12 @@ const Header = ({ handlePathname, showLinks }) => {
   const headerData = {
     logo: "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=height:60/https://cdn.filestackcontent.com/QaXgiMolT9eAmFXmB8VY",
     links: [
-      { name: "What is Academind Pro", link: "/Home" },
       { name: "All Courses", link: "/AllCourses" },
-      { name: "Enrolled Courses", link: "#" },
-      { name: "Community & Support", link: "#" },
+      { name: "Enrolled Courses", link: "/enroll-courses" },
+      {
+        name: "Interview Expert",
+        link: "https://interviewexpert.vercel.app/",
+      },
     ],
     userData: [
       { name: "Refer a Friend", link: "#" },
@@ -30,7 +32,9 @@ const Header = ({ handlePathname, showLinks }) => {
   return (
     <>
       <div className="flex items-center justify-between h-16 z-50 gap-5 px-10 md:px-32 sticky top-0 bg-[rgba(47,43,59,0.97)]">
-        <img src={headerData.logo} alt="logo" />
+        <Link to={"/Home"}>
+          <img src={headerData.logo} alt="logo" />
+        </Link>
         <span className="flex gap-5">
           {showLinks && (
             <ul className="items-center justify-center hidden gap-5 cursor-pointer lg:flex">

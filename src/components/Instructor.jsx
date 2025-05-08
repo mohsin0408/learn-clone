@@ -1,22 +1,21 @@
 import React from "react";
-import { InstructorData } from "../Data/Data";
 
-const Instructor = () => {
+const Instructor = ({ instructorData }) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className=" flex flex-col gap-4 w-[53%] p-6 ">
-        <h2>{InstructorData?.heading}</h2>
+        <h2>Your Instructor</h2>
         <div className="flex gap-2 ">
           <div>
             <img
               className=" rounded-[50%] w-[170px]  "
-              src={InstructorData?.singleImg}
+              src={instructorData?.tutorImage}
             />
-            <h2>{InstructorData?.title}</h2>
+            <h2>{instructorData?.tutor}</h2>
           </div>
           <div>
-            {InstructorData?.para?.map((item, index) => (
-              <div key={index}>
+            {instructorData?.tutorCourseReviewData?.map((item) => (
+              <div key={item._id}>
                 <p className="text-lg font-extralight ">{item}</p>
               </div>
             ))}

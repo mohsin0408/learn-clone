@@ -34,7 +34,9 @@ const Registration = () => {
             "https://optimist-dev-backend.onrender.com/user/register",
             {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
+              headers: {
+                "Content-Type": "application/json",
+              },
               body: JSON.stringify(values),
             }
           );
@@ -101,17 +103,17 @@ const Registration = () => {
             />
             {touched.email && errors.email ? <div>{errors.email}</div> : null}
           </div>
-          <label className="flex gap-2">
+          {/* <label className="flex gap-2">
             <input id="check" name="check" type="checkbox" className="w-8" />
             <p>
               I agree to receive promotional and instructional emails from
               Academind
             </p>
-          </label>
-          <p className="text-sm text-gray-400">
+          </label> */}
+          {/* <p className="text-sm text-gray-400">
             By signing up, I agree to Academind's Privacy & Terms and
             Teachable's Privacy 7 Terms
-          </p>
+          </p> */}
           <Button text="Send Code" px="32px" py="8px" />
           <p className="text-sm text-center text-gray-400">
             Already have an account? <Link to="/Login">Log in</Link>

@@ -10,12 +10,12 @@ import {
 } from "react-router-dom";
 import Home from "./components/Home";
 import SingleCourse from "./components/SingleCourse";
-import { courseData } from "./Data/Data";
 import Header from "../src/components/Header";
 import { Provider } from "react-redux";
 import store from "../src/components/Store/Store";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
+import EnrollCourses from "./components/EnrollCourses";
 
 const App = () => {
   return (
@@ -28,7 +28,7 @@ const App = () => {
 };
 
 const AppWithRouter = () => {
-  const location = useLocation(); // Now useLocation() is inside the Router
+  const location = useLocation();
   const [pathname, setPathname] = useState(null);
 
   const handlePathname = (name) => {
@@ -58,13 +58,10 @@ const AppWithRouter = () => {
         <Route path="/course/:slug" element={<SingleCourse />} />
         <Route path="/AllCourses" element={<AllCourses />} />
         <Route
-          path="/course/:slug/Lectures"
-          element={<Dashboard handlePathname={handlePathname} />}
-        />
-        <Route
           path="/course/:slug/Lectures/:id"
           element={<Dashboard handlePathname={handlePathname} />}
         />
+        <Route path="/enroll-courses" element={<EnrollCourses />} />
       </Routes>
       {!isLecturePage &&
         (pathname === "/Login" || pathname === "/" ? (

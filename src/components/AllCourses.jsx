@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Course from "./Course";
 import FilterList from "./FilterList";
 import { IoSearch } from "react-icons/io5";
-import { courseData, categoryData, authorData } from "../Data/Data";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory, setAuthor, filterCourses } from "./Store/Action";
 
 const AllCourses = () => {
+  const [courseData, setCourseData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    fetch("https://optimist-dev-backend.onrender.com/api/courses").then((res) =>
+      res
+        .json()
+        .then((data) => setCourseData(data.courses))
+        .catch((error) => console.log(error.message))
+    );
+  }, []);
+
   const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
   const author = useSelector((state) => state.author);
@@ -18,21 +29,32 @@ const AllCourses = () => {
     useState(category);
   const [currentSelectedAuthor, setCurrentSelectedAuthor] = useState(author);
 
-  const handleCategoryFilter = (item, index) => {
-    console.log(item, author, courseData, index, "item1");
+  const handleCategoryFilter = (item) => {
     setCurrentSelectedCategory(item);
     dispatch(setCategory(item));
-    dispatch(filterCourses(item, author, courseData));
-    setCategoryToggle(!categoryToggle);
+    dispatch(filterCourses(item, author, courseData, searchQuery));
+    setCategoryToggle(false);
   };
 
-  const handleAuthorFilter = (item, index) => {
-    console.log(item, category, courseData, index, "item");
+  const handleAuthorFilter = (item) => {
     setCurrentSelectedAuthor(item);
     dispatch(setAuthor(item));
-    dispatch(filterCourses(category, item, courseData));
-    setAuthorToggle(!authorToggle);
+    dispatch(filterCourses(category, item, courseData, searchQuery));
+    setAuthorToggle(false);
   };
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    dispatch(filterCourses(category, author, courseData, value));
+  };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <div className="bg-[#f1f0f0] flex flex-col items-center">
@@ -47,18 +69,19 @@ const AllCourses = () => {
                 {currentSelectedCategory}
               </p>
             </span>
-            {categoryToggle === true ? (
+            {categoryToggle && (
               <span className="absolute z-20 p-2 border-2 bg-white shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)] ">
-                {categoryData?.map((item, index) => (
-                  <FilterList
-                    key={index}
-                    item={item}
-                    onClick={() => handleCategoryFilter(item, index)}
-                  />
-                ))}
+                {courseData
+                  .map((item, index) => item.category) // Getting unique categories
+                  .filter((value, index, self) => self.indexOf(value) === index) // Remove duplicates
+                  .map((item, index) => (
+                    <FilterList
+                      key={index}
+                      item={item}
+                      onClick={() => handleCategoryFilter(item)}
+                    />
+                  ))}
               </span>
-            ) : (
-              ""
             )}
           </div>
 
@@ -71,25 +94,29 @@ const AllCourses = () => {
                 {currentSelectedAuthor}
               </p>
             </span>
-            {authorToggle === true ? (
+            {authorToggle && (
               <span className="absolute p-2 border-2 bg-white shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)] ">
-                {authorData?.map((item, index) => (
-                  <FilterList
-                    key={index}
-                    item={item}
-                    onClick={() => handleAuthorFilter(item)}
-                  />
-                ))}
+                {courseData
+                  .map((item) => item.tutor) // Getting unique authors
+                  .filter((value, index, self) => self.indexOf(value) === index) // Remove duplicates
+                  .map((item, index) => (
+                    <FilterList
+                      key={index}
+                      item={item}
+                      onClick={() => handleAuthorFilter(item)}
+                    />
+                  ))}
               </span>
-            ) : (
-              ""
             )}
           </div>
         </div>
+
         <div className="flex items-center ">
           <input
+            value={searchQuery}
+            onChange={handleSearchChange}
             placeholder="Search by Title, Author or Category"
-            className=" w-[300px] sm:w-[220px]  px-4 py-1 border-2  h-11"
+            className="w-[300px] sm:w-[220px] px-4 py-1 border-2 h-11"
           />
           <span className="py-[10px] px-[16px] text-lg h-11 border-2 bg-white hover:bg-[#f1f0f0] cursor-pointer ">
             <IoSearch />
@@ -99,7 +126,7 @@ const AllCourses = () => {
 
       <div>
         {filteredCourses.length === 0 ? (
-          <Course courseData={courseData?.data} />
+          <Course courseData={courseData} />
         ) : (
           <Course courseData={filteredCourses} />
         )}

@@ -39,13 +39,18 @@ const setName = (name) => {
   };
 };
 
-const filterCourses = (category, author, courseData) => {
+const filterCourses = (category, author, courseData, searchQuery = "") => {
   return (dispatch) => {
-    const filteredData = courseData?.data?.filter((course) => {
-      console.log("Course:", course);
-      const matchCategory = category === "All" || category === course.category;
-      const matchAuthor = author === "All" || author === course.tutor;
-      return matchCategory && matchAuthor;
+    const filteredData = courseData?.filter((course) => {
+      const matchCategory = category === "All" || course.category === category;
+      const matchAuthor = author === "All" || course.tutor === author;
+
+      const matchSearch =
+        course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.tutor.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.category.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchCategory && matchAuthor && matchSearch;
     });
 
     dispatch(setFilteredCourses(filteredData));

@@ -1,29 +1,24 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { SlHome } from "react-icons/sl";
 import { IoSettingsOutline } from "react-icons/io5";
-import { courseData } from "../Data/Data";
-import { useParams } from "react-router-dom";
 import { LuTvMinimalPlay } from "react-icons/lu";
-import { FaRegCircle } from "react-icons/fa";
+import { FaRegCircle } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { setVideoSrcs, setName } from "./Store/Action";
 import Curriculum from "./Curriculum";
 
 const Dashboard = ({ handlePathname }) => {
+  const [lectures, setLectures] = useState(null);
+  const [loading, setLoading] = useState(true);
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const videoSrcs = useSelector((state) => state.videoSrcs);
   const name = useSelector((state) => state.name);
 
-  const courseObj = courseData?.data?.filter(
-    (course) => course.slug === params.slug
-  );
-
   const location = useLocation();
   const pathname = location.pathname;
-
   const pathParts = pathname.split("/");
   const lastPart = pathParts[pathParts.length - 1];
 
@@ -31,101 +26,99 @@ const Dashboard = ({ handlePathname }) => {
     handlePathname(lastPart);
   }, [lastPart, handlePathname]);
 
-  const handleVideoSrcs = (videoSrc, name, id) => {
-    dispatch(setVideoSrcs(videoSrc));
-    dispatch(setName(name));
-    navigate(`/course/${params.slug}/Lectures/${id}`);
+  const fetchLectures = async () => {
+    try {
+      const res = await fetch(
+        `https://optimist-dev-backend.onrender.com/api/course-lectures/${params.slug}`
+      );
+      const data = await res.json();
+
+      const curriculum = data?.lectures?.courseCurriculumData;
+      setLectures(curriculum);
+
+      const currentLecture = curriculum
+        ?.flatMap((section) => section.chapters)
+        .find((chapter) => chapter.id === Number(params.id));
+
+      if (currentLecture) {
+        dispatch(setVideoSrcs(currentLecture.chapter_src));
+        dispatch(setName(currentLecture.title));
+      }
+    } catch (error) {
+      console.error("Error fetching lectures:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // useEffect(() => {
-  //   const currentCourse = courseObj[0].firstContent.filter(
-  //     (item) => item.id === params.id
-  //   );
+  useEffect(() => {
+    fetchLectures();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [params.slug, params.id]);
 
-  //   dispatch(setName(currentCourse[0].name));
-  //   dispatch(setVideoSrcs(currentCourse[0].vidSrc));
-  //   handlePathname(params.id);
-  // }, []);
+  const handleVideoSrcs = (videoSrc, title, id) => {
+    dispatch(setVideoSrcs(videoSrc));
+    dispatch(setName(title));
+    navigate(`/lectures/${params.slug}/Lectures/${id}`);
+  };
+
+  if (loading) return <div className="mt-20 text-center">Loading...</div>;
+  if (!lectures)
+    return <div className="mt-20 text-center">Lectures not found</div>;
 
   return (
     <div>
       <div className="flex">
-        <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white w-[405px] ">
-          {/* <SlHome onClick={() => navigate(`/course/${params.slug}`)} /> */}
+        <div className="flex items-center justify-between h-16 p-3 text-2xl text-white bg-black border-r border-white w-[405px]">
+          <SlHome
+            className="cursor-pointer"
+            onClick={() => navigate(`/course/${params.slug}`)}
+          />
           <IoSettingsOutline />
         </div>
-        <div className="w-4/5 h-16 p-3 text-2xl text-white bg-black ">
-          plmkinjuhbvgy
-        </div>
       </div>
+
       <div className="flex">
-        <div className=" w-[380px] h-[550px] ">
-          <Curriculum />
-          {/* {courseObj?.map((obj, index) => (
-            <div
-              key={index}
-              className="overflow-y-scroll w-[390px] h-[32rem] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
-              <p className="px-4 py-3 text-lg font-semibold ">
-                {obj?.firstHead}
+        <div className="w-[380px] h-[550px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+          <Curriculum dashboard lectures={lectures} />
+          {/* {lectures.map((lectureSection) => (
+            <div key={lectureSection.id}>
+              <p className="px-4 py-3 text-lg font-semibold bg-gray-200">
+                {lectureSection.title}
               </p>
-              <div>
-                {obj?.firstContent?.map((item, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className=" hover:bg-[#c494ff] p-3  flex items-center gap-2 border-y "
-                      onClick={() =>
-                        handleVideoSrcs(item?.vidSrc, item?.name, item?.id)
-                      }>
-                      <span className="px-2 text-2xl border-r ">
-                        <FaRegCircle />
-                      </span>
-                      <span className="flex items-center justify-center gap-1 text-2xl ">
-                        <span>
-                          <LuTvMinimalPlay />
-                        </span>
-                        <p className="text-base">{item.name}</p>
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-              <p className="px-4 py-3 text-lg font-semibold ">
-                {obj?.secondHead}
-              </p>
-              <div>
-                {obj?.secondContent.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-4 p-3 hover:bg-[#e0d2f0] border-y ">
-                    <span className="text-2xl">
-                      <FaRegCircle />
-                    </span>
-                    <span className="flex items-center justify-center gap-1 text-2xl ">
-                      <span>
-                        <LuTvMinimalPlay />
-                      </span>
-                      <p className="text-base">{item}</p>
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {lectureSection.chapters?.map((chapter) => (
+                <div
+                  key={chapter.id}
+                  className="hover:bg-[#c494ff] p-3 flex items-center gap-2 border-y cursor-pointer"
+                  onClick={() =>
+                    handleVideoSrcs(
+                      chapter.chapter_src,
+                      chapter.title,
+                      chapter.id
+                    )
+                  }>
+                  <span className="px-2 text-2xl border-r">
+                    <FaRegCircle />
+                  </span>
+                  <span className="flex items-center gap-2 text-2xl">
+                    <LuTvMinimalPlay />
+                    <p className="text-base">{chapter.title}</p>
+                  </span>
+                </div>
+              ))}
             </div>
           ))} */}
         </div>
+
         <div className="flex flex-col items-center justify-center">
-          <div>
-            <span className="flex items-center justify-center gap-1 text-2xl ">
-              <span>
-                <LuTvMinimalPlay />
-              </span>
-              <p className="text-base">{name}</p>
-            </span>
+          <div className="flex items-center gap-2 mb-2 text-xl font-medium">
+            <LuTvMinimalPlay />
+            <p>{name}</p>
           </div>
           <video
             src={videoSrcs}
-            width="50%"
-            height="50%"
+            width="600"
+            height="400"
             autoPlay
             muted
             playsInline

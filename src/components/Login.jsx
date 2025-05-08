@@ -25,7 +25,7 @@ const Login = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email: email }),
         }
       );
 
@@ -63,10 +63,10 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="flex gap-2 py-4 ">
+          {/* <div className="flex gap-2 py-4 ">
             <input id="check" name="check" type="checkbox" />
             <p>Remember me</p>
-          </div>
+          </div> */}
           <Button text="Log in" px="32px" py="8px" rounded="lg" />
           <p className="p-4 text-sm text-center text-gray-400 ">
             Doesn't have an Account? <Link to="/">Sign up</Link>

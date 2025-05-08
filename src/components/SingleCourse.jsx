@@ -10,31 +10,48 @@ import Membership from "./Membership";
 import Instructor from "./Instructor";
 
 const SingleCourse = () => {
-  const [data, setData] = useState("");
+  const [singleCourseData, setSingleCourseData] = useState({});
+  const [lectures, setlectures] = useState([]);
   const { slug } = useParams();
 
   useEffect(() => {
-    fetch(`https://optimist-dev-backend.onrender.com/api/course/${slug}`).then(
-      (res) => res.json().then((data) => setData(data))
-    );
+    fetch(
+      `https://optimist-dev-backend.onrender.com/api/course-lectures/${slug}`
+    )
+      .then((res) =>
+        res
+          .json()
+          .then((data) => setlectures(data.lectures.courseCurriculumData))
+      )
+      .catch((error) => console.log(error.message));
+  }, []);
+
+  useEffect(() => {
+    fetch(`https://optimist-dev-backend.onrender.com/api/course/${slug}`)
+      .then((res) => res.json())
+      .then((singleCourseData) => setSingleCourseData(singleCourseData.course))
+      .catch((error) => console.log(error.message));
   }, [slug]);
 
-  console.log(data, "data");
-
-  // const modifiedData = {
-  //   ...course,
-  //   btnText: ["Watch Promo", "Enroll in Course"],
-  // };
-
+  const modifiedsingleCourseData = {
+    ...singleCourseData,
+    btnText: ["Watch Promo", "Enroll in Course"],
+  };
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <div>
-      <Hero heroData={data} />
-      <CourseInfo infoData={data} />
-      <Curriculum />
+      <Hero heroData={modifiedsingleCourseData} />
+      <CourseInfo infoData={singleCourseData} />
+      <Curriculum lectures={lectures} />
       <Review />
       <MoneyBack />
       <Question />
-      <Instructor />
+      <Instructor instructorData={singleCourseData} />
       <Membership />
     </div>
   );

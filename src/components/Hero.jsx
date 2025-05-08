@@ -20,18 +20,7 @@ const Hero = ({ heroData }) => {
           {heroData?.subtitle ? heroData?.subtitle : heroData?.course?.subtitle}
         </p>
 
-        <Button
-          text={
-            heroData?.btnText
-              ? heroData?.btnText
-                ? heroData?.course?.btnText
-                : heroData?.course?.btnText
-              : "Click here"
-          }
-          rounded="full"
-          px="30px"
-          py="12px"
-        />
+        <Button text={heroData.btnText} rounded="full" px="30px" py="12px" />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ const heroData = {
   subtitle:
     "Unlock unlimited learning with instant access to 50 courses and continuous updates.",
   btnText: "Get Full Access Now",
-  ImageBitmap: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
+  image: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
 };
 
 const courseData = {
@@ -17,7 +17,7 @@ const courseData = {
       tutor: "Maximilian Schwarzmüller",
       price: "$69",
       category: "Web Development",
-      slug: "AI-For-Developers-With-GitHub-Copilot-Cursor-AI-&-ChatGPT",
+      slug: "ai-for-developers-with-github-copilot-cursor-chatgpt",
       videoUrl: "https://player.hotmart.com/embed/4qXbXN5wZv",
       headings:
         "This is The course developers should take to leverage AI efficiently!",

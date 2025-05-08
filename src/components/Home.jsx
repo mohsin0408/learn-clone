@@ -10,12 +10,24 @@ import MoneyBack from "./MoneyBack";
 import NewVideo from "./NewVideo";
 
 const Home = () => {
-  const [data, setData] = useState("");
+  console.log(heroData);
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch("https://optimist-dev-backend.onrender.com/api/courses").then((res) =>
-      res.json().then((data) => setData(data))
+      res
+        .json()
+        .then((data) => setData(data))
+        .catch((error) => console.log(error.message))
     );
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
 
   return (
