@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import AllCourses from "./components/AllCourses";
@@ -28,6 +28,8 @@ const App = () => {
 };
 
 const AppWithRouter = () => {
+  const planRef = useRef(null);
+  const promoRef = useRef(null);
   const location = useLocation();
   const [pathname, setPathname] = useState(null);
 
@@ -39,36 +41,60 @@ const AppWithRouter = () => {
     location.pathname.includes("/course/") &&
     location.pathname.includes("/Lectures/");
 
+  const goToRefs = () => {
+    if (planRef.current) {
+      planRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    } else if (promoRef.current) {
+      promoRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     setPathname(location.pathname);
   }, [location]);
 
   return (
     <>
-      {/* {!isLecturePage &&
+      {!isLecturePage &&
         (pathname === "/Login" || pathname === "/" ? (
           <Header handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Header handlePathname={handlePathname} showLinks={true} />
-        ))} */}
+        ))}
       <Routes>
-        {/* <Route path="/" element={<Registration />} />
-        <Route path="/Login" element={<Login />} /> */}
-        <Route path="/" element={<Home />} />
-        <Route path="/course/:slug" element={<SingleCourse />} />
-        <Route path="/AllCourses" element={<AllCourses />} />
+        <Route path="/" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
         <Route
-          path="/course/:slug/Lectures/:id"
+          path="/home"
+          element={<Home planRef={planRef} goToRefs={goToRefs} />}
+        />
+        <Route
+          path="/course/:slug"
+          element={
+            <SingleCourse
+              planRef={planRef}
+              goToRefs={goToRefs}
+              promoRef={promoRef}
+            />
+          }
+        />
+        <Route path="/allcourses" element={<AllCourses />} />
+        <Route
+          path="/course/:slug/lectures/:id"
           element={<Dashboard handlePathname={handlePathname} />}
         />
         <Route path="/enroll-courses" element={<EnrollCourses />} />
       </Routes>
-      {/* {!isLecturePage &&
-        (pathname === "/Login" || pathname === "/" ? (
+      {!isLecturePage &&
+        (pathname === "/login" || pathname === "/" ? (
           <Footer handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Footer handlePathname={handlePathname} showLinks={true} />
-        ))} */}
+        ))}
     </>
   );
 };

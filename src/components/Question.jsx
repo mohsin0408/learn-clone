@@ -38,20 +38,20 @@ const Question = () => {
         <FaQuestionCircle className="text-2xl" />
         <h2 className="text-xl font-semibold">{questionData?.heading}</h2>
       </div>
-      <div className="flex flex-col items-center justify-center gap-4 w-[100%] sm:w-[80%] ">
+      <div className="flex flex-col items-center justify-center gap-4 w-[100%] md:w-[70%] sm:w-[80%] ">
         {questionData?.data?.map(({ id, query, answer }) => {
           const [isActive, setIsActive] = useState(false);
           return (
             <div
               key={id}
-              className="rounded-md w-[100%] sm:w-[715px] p-4 border-2 ">
+              className="rounded-md w-[100%] sm:w-[100%] p-4 border-2 ">
               <div
                 onClick={() => setIsActive(!isActive)}
                 className="flex items-center justify-between cursor-pointer">
                 <h3 className="text-lg font-medium">{query}</h3>
                 <span>{isActive ? "−" : "+"}</span>
               </div>
-              {isActive && <p className="mt-2 line-clamp-4">{answer}</p>}
+              {isActive && <p className="mt-2 ">{answer}</p>}
             </div>
           );
         })}

@@ -9,7 +9,7 @@ import Question from "./Question";
 import Membership from "./Membership";
 import Instructor from "./Instructor";
 
-const SingleCourse = () => {
+const SingleCourse = ({ planRef, goToRefs, promoRef }) => {
   const [singleCourseData, setSingleCourseData] = useState({});
   const [lectures, setlectures] = useState([]);
   const { slug } = useParams();
@@ -44,16 +44,16 @@ const SingleCourse = () => {
     });
   }, []);
   return (
-    <div>
-      <Hero heroData={modifiedsingleCourseData} />
-      <CourseInfo infoData={singleCourseData} />
+    <>
+      <Hero heroData={modifiedsingleCourseData} goToRefs={goToRefs} />
+      <CourseInfo infoData={singleCourseData} promoRef={promoRef} />
       <Curriculum lectures={lectures} />
       <Review />
       <MoneyBack />
       <Question />
       <Instructor instructorData={singleCourseData} />
-      <Membership />
-    </div>
+      <Membership planRef={planRef} />
+    </>
   );
 };
 

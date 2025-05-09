@@ -8,18 +8,18 @@ const Curriculum = ({ dashboard, lectures }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col gap-4 px-2 ">
+      <div className="flex flex-col gap-4 p-6 sm:w-[50%] w-[100%]">
         <h2 className="mt-5 text-3xl ">Course Curriculum</h2>
         <div className="">
-          {lectures?.map((obj) => (
-            <>
+          {lectures?.map((obj, index) => (
+            <div key={index}>
               <p className="px-4 py-3 gap-4 bg-[#e8e8e8] text-lg font-semibold ">
                 {obj?.title}
               </p>
               <p>
                 {obj?.chapters?.map((item) => {
                   return (
-                    <div key={item._id} className="w-full text-base">
+                    <div key={item.id} className="w-full text-base">
                       <Link to={`/course/${slug}/Lectures/${item.id}`}>
                         <div className="flex items-center cursor-pointer w-full justify-between py-3 px-4 bg-[#f0f0f0] border-b-2 border-b-white gap-2 md:gap-20 hover:text-[#430094] hover:bg-[#e0d2f0]">
                           <span className="flex items-center gap-3 line-clamp-2">
@@ -42,7 +42,7 @@ const Curriculum = ({ dashboard, lectures }) => {
                   );
                 })}
               </p>
-            </>
+            </div>
           ))}
         </div>
         {/* <div className=""></div> */}

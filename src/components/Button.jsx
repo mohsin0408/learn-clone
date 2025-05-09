@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ text, rounded, px, py }) => {
+const Button = ({ text, obj, rounded, px, py, clickHandler }) => {
   const padding = {
     paddingLeft: px ? `${px}` : undefined,
     paddingRight: px ? `${px}` : undefined,
@@ -15,15 +15,17 @@ const Button = ({ text, rounded, px, py }) => {
       {Array.isArray(text) ? (
         text.map((item, index) => (
           <button
+            onClick={() => clickHandler(obj)}
             key={index}
             className={`border border-[#5A00C7]  bg-[#5A00C7] hover:bg-[#42048e] text-white 
-              ${roundedClass} font-semibold mr-4`}
+              ${roundedClass} font-semibold`}
             style={padding}>
             {item}
           </button>
         ))
       ) : (
         <button
+          onClick={() => clickHandler(obj)}
           className={`border border-[#5A00C7]  bg-[#5A00C7] hover:bg-[#42048e] text-white 
             ${roundedClass} font-semibold `}
           style={padding}>

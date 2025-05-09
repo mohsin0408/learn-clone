@@ -8,7 +8,7 @@ const Footer = ({ handlePathname, showLinks }) => {
     handlePathname(location?.pathname);
   }, [location, handlePathname]);
   return (
-    <div className="bg-[#2F2B3B] py-5 flex  items-center px-44 gap-64">
+    <div className="bg-[#2F2B3B] py-5 flex items-center px-6 sm:px-24 gap-6 sm:gap-12">
       <p className="text-[#bac1c7]">© Academind 2021</p>
       {showLinks && (
         <ul>

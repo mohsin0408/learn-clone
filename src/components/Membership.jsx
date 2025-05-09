@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "./Button";
+import MemberShipCard from "./MemberShipCard";
 
-const Membership = () => {
+const Membership = ({ planRef }) => {
   const membershipData = [
     {
       id: "1",
@@ -20,31 +21,15 @@ const Membership = () => {
       btnText: "Join Pro",
     },
   ];
+
   return (
-    <div className=" p-9 bg-[#3c374b] ">
+    <div className=" p-9 bg-[#3c374b]" ref={planRef}>
       <h2 className="text-center text-[#ffc675] font-bold text-3xl mt-5 mb-10 ">
         Join Now and Become a Pro Member!
       </h2>
       <div className="flex flex-wrap items-center justify-center w-full h-full gap-10 ">
         {membershipData.map((obj, index) => (
-          <div
-            key={index}
-            className="flex flex-col p-8 text-center border border-black w-full h-[447px] sm:w-[48%] md:w-[34%] bg-[#2e2b3b] border-none shadow-xl rounded-xl ">
-            <span className="pt-5 text-4xl font-bold text-center text-white ">
-              {obj?.heading}
-            </span>
-            <p className="pb-5 text-4xl font-bold text-center text-white ">
-              Membership
-            </p>
-            <span className="mb-3 text-base text-white ">{obj?.desc}</span>
-            <span className=" text-[#ffc675] text-5xl  font-bold leading-[85px] border-t border-[#ccc] ">
-              {obj?.price}
-            </span>
-            <span className="mb-3 text-xs text-white ">{obj?.info}</span>
-            <span>
-              <Button text={obj?.btnText} rounded="md" px="32px" py="8px" />
-            </span>
-          </div>
+          <MemberShipCard obj={obj} index={index} />
         ))}
       </div>
     </div>

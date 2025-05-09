@@ -8,11 +8,11 @@ import { heroData } from "../Data/Data";
 import Goals from "./Goals";
 import MoneyBack from "./MoneyBack";
 import NewVideo from "./NewVideo";
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
-  console.log(heroData);
-
+const Home = ({ planRef, goToRefs }) => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://optimist-dev-backend.onrender.com/api/courses").then((res) =>
@@ -24,6 +24,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      navigate("/login");
+    }
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -32,7 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <Hero heroData={heroData} />
+      <Hero heroData={heroData} goToRefs={goToRefs} />
       <NewVideo />
       <Goals />
       <MoneyBack />
@@ -40,7 +44,7 @@ const Home = () => {
       <Course courseData={data?.courses} />
       <Review />
       <Question />
-      <Membership />
+      <Membership planRef={planRef} />
     </>
   );
 };

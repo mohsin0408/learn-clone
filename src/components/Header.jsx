@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = ({ handlePathname, showLinks }) => {
   const [toggle, setToggle] = useState(false);
   const [profileToggle, setProfileToggle] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     handlePathname(location?.pathname);
@@ -22,12 +23,16 @@ const Header = ({ handlePathname, showLinks }) => {
         link: "https://interviewexpert.vercel.app/",
       },
     ],
-    userData: [
-      { name: "Refer a Friend", link: "#" },
-      { name: "Settings", link: "#" },
-      { name: "Logout" },
-    ],
   };
+
+  const handleLogout = () => {
+    console.log("Logout");
+    localStorage.removeItem("user");
+    navigate("/login");
+    setProfileToggle(!profileToggle);
+    setToggle(false);
+  };
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <>
@@ -49,35 +54,25 @@ const Header = ({ handlePathname, showLinks }) => {
           )}
           <span>
             {showLinks && (
-              <FaCircleUser
-                className="invisible text-3xl text-white lg:visible "
-                onClick={() => {
-                  setProfileToggle(!profileToggle);
-                }}
-              />
+              <div className="flex items-center gap-2">
+                <FaCircleUser
+                  className="invisible text-3xl text-white lg:visible "
+                  onClick={() => {
+                    setProfileToggle(!profileToggle);
+                  }}
+                />
+                <span className="text-white max-lg:hidden">{user?.name}</span>
+              </div>
             )}
 
             {profileToggle && (
-              <ul className=" absolute bg-[rgba(238,237,241,0.97)] hidden lg:block ">
-                {headerData.userData.map((item, index) => (
-                  <li key={index}>
-                    {index === 2 ? (
-                      <Link
-                        to={"/Login"}
-                        className="p-2"
-                        onClick={() => setProfileToggle(false)}>
-                        {item.name}
-                      </Link>
-                    ) : (
-                      <Link
-                        to={item.link}
-                        className="flex p-2 border-b "
-                        onClick={() => setProfileToggle(false)}>
-                        {item.name}
-                      </Link>
-                    )}
-                  </li>
-                ))}
+              <ul className=" absolute bg-[rgba(238,237,241,0.97)] hidden lg:block cursor-pointer p-2">
+                <li
+                  onClick={() => {
+                    handleLogout();
+                  }}>
+                  Logout
+                </li>
               </ul>
             )}
           </span>
@@ -93,46 +88,27 @@ const Header = ({ handlePathname, showLinks }) => {
       {/* Hamburger Menu */}
 
       {toggle && (
-        <ul className="fixed z-50 w-full bg-[rgba(47,43,59,0.97)] p-2">
+        <ul className="fixed z-50 w-[100%] bg-[rgba(47,43,59,0.97)] p-2">
           {headerData.links.map((link, index) => (
-            <li key={index} className="p-2 text-white">
+            <li key={index} className="w-full p-2 text-white">
               <Link to={link.link} onClick={() => setToggle(false)}>
                 {link.name}
               </Link>
             </li>
           ))}
           <div className="p-2">
-            <FaCircleUser
-              className="text-3xl text-white"
-              onClick={() => {
-                setProfileToggle(!profileToggle);
-              }}
-            />
-            {profileToggle && (
+            <div className="flex items-center gap-2">
+              <FaCircleUser className="text-3xl text-white" />
+              <span className="text-white lg:hidden">{user?.name}</span>
+            </div>
+            <span className="text-white" onClick={() => handleLogout()}>
+              Logout
+            </span>
+            {/* {profileToggle && (
               <ul className="absolute bg-[rgba(238,237,241,0.97)]">
-                {headerData.userData.map((item, index) => (
-                  <li key={index}>
-                    {index === 2 ? (
-                      <Link
-                        to={"/Login"}
-                        className="p-2"
-                        onClick={() => {
-                          setProfileToggle(false), setToggle(false);
-                        }}>
-                        {item.name}
-                      </Link>
-                    ) : (
-                      <Link
-                        to={item.link}
-                        className="flex p-2 border-b "
-                        onClick={() => setProfileToggle(false)}>
-                        {item.name}
-                      </Link>
-                    )}
-                  </li>
-                ))}
+                <li onClick={() => handleLogout()}>{item.name}</li>) }
               </ul>
-            )}
+            )} */}
           </div>
         </ul>
       )}
