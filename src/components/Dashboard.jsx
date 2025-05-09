@@ -81,36 +81,9 @@ const Dashboard = ({ handlePathname }) => {
       <div className="flex">
         <div className="w-[380px] h-[550px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
           <Curriculum dashboard lectures={lectures} />
-          {/* {lectures.map((lectureSection) => (
-            <div key={lectureSection.id}>
-              <p className="px-4 py-3 text-lg font-semibold bg-gray-200">
-                {lectureSection.title}
-              </p>
-              {lectureSection.chapters?.map((chapter) => (
-                <div
-                  key={chapter.id}
-                  className="hover:bg-[#c494ff] p-3 flex items-center gap-2 border-y cursor-pointer"
-                  onClick={() =>
-                    handleVideoSrcs(
-                      chapter.chapter_src,
-                      chapter.title,
-                      chapter.id
-                    )
-                  }>
-                  <span className="px-2 text-2xl border-r">
-                    <FaRegCircle />
-                  </span>
-                  <span className="flex items-center gap-2 text-2xl">
-                    <LuTvMinimalPlay />
-                    <p className="text-base">{chapter.title}</p>
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))} */}
         </div>
 
-        <div className="flex flex-col items-center justify-center">
+        {/* <div className="flex flex-col items-center justify-center">
           <div className="flex items-center gap-2 mb-2 text-xl font-medium">
             <LuTvMinimalPlay />
             <p>{name}</p>
@@ -125,7 +98,7 @@ const Dashboard = ({ handlePathname }) => {
             controls>
             Your browser does not support the video tag.
           </video>
-        </div>
+        </div> */}
       </div>
     </div>
   );

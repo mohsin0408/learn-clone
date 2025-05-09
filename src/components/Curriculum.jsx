@@ -8,7 +8,7 @@ const Curriculum = ({ dashboard, lectures }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col gap-4 p-6 sm:w-[50%] w-[100%]">
+      <div className="flex flex-col gap-4 p-6 sm:w-[80%] w-[100%]">
         <h2 className="mt-5 text-3xl ">Course Curriculum</h2>
         <div className="">
           {lectures?.map((obj, index) => (
