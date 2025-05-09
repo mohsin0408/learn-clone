@@ -45,16 +45,16 @@ const AppWithRouter = () => {
 
   return (
     <>
-      {!isLecturePage &&
+      {/* {!isLecturePage &&
         (pathname === "/Login" || pathname === "/" ? (
           <Header handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Header handlePathname={handlePathname} showLinks={true} />
-        ))}
+        ))} */}
       <Routes>
-        <Route path="/" element={<Registration />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Home" element={<Home />} />
+        {/* <Route path="/" element={<Registration />} />
+        <Route path="/Login" element={<Login />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/course/:slug" element={<SingleCourse />} />
         <Route path="/AllCourses" element={<AllCourses />} />
         <Route
@@ -63,12 +63,12 @@ const AppWithRouter = () => {
         />
         <Route path="/enroll-courses" element={<EnrollCourses />} />
       </Routes>
-      {!isLecturePage &&
+      {/* {!isLecturePage &&
         (pathname === "/Login" || pathname === "/" ? (
           <Footer handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Footer handlePathname={handlePathname} showLinks={true} />
-        ))}
+        ))} */}
     </>
   );
 };
