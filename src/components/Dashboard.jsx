@@ -90,26 +90,31 @@ const Dashboard = ({ handlePathname }) => {
         <div className=" w-[380px] h-full overflow-y-auto hidden md:block scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
           <Curriculum dashboard lectures={lectures} />
         </div>
-        <div className="flex-1 py-10 md:pt-[70px] pt-[80px] flex flex-col items-center gap-4">
-          <div className="px-6 py-7 ">
-            <div className="flex items-center gap-2 mb-2 text-xl font-medium">
-              <LuTvMinimalPlay />
-              <p>{name}</p>
+        <div className="flex-1 py-10 md:pt-[20px] pt-[80px] flex flex-col items-center gap-4">
+          <div className="px-6 py-7">
+            <div className="flex items-center gap-4 mb-5 text-xl font-medium">
+              <LuTvMinimalPlay className="text-[35px] sm:text-[30px] " />
+              <p className="text-[20px] sm:text-[20px] ">{name}</p>
             </div>
             <video
               src={videoSrcs}
-              className="w-[100%]  rounded-lg"
+              className="w-[75%]  mb-5  rounded-lg"
               autoPlay
               muted
               playsInline
               controls>
               Your browser does not support the video tag.
             </video>
+            <div className="text-center">
+              <Button text="completed" px="30px" py="12px" />
+            </div>
           </div>
         </div>
       </div>
       {show && (
-        <div className=" fixed top-40 left-0 z-50 w-full h-[calc(100vh-70px)] overflow-y-auto bg-white md:hidden scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200  ">
+        <div
+          className=" fixed top-40 left-0 z-50 w-full h-[calc(100vh-70px)] overflow-y-auto bg-white md:hidden scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200"
+          onClick={() => setShow(!show)}>
           <Curriculum dashboard lectures={lectures} />
         </div>
       )}

@@ -16,10 +16,10 @@ const Hero = ({ heroData, goToRefs }) => {
         <h1 className="text-[#FFC675] px-1 md:text-5xl text-4xl font-semibold">
           {heroData?.title ? heroData?.title : heroData?.course?.title}
         </h1>
-        <p className="mb-12 mx-[2px] sm:mx-[30px] xl:mx-[195px] text-2xl md:text-3xl text-white px-1 pt-7 ">
+        <p className="mb-12 mx-[2px] sm:mx-[30px] xl:mx-[195px] text-2xl md:text-3xl text-white px-2 pt-7 ">
           {heroData?.subtitle ? heroData?.subtitle : heroData?.course?.subtitle}
         </p>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 px-1">
           <Button
             text={heroData.btnText}
             rounded="full"

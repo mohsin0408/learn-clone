@@ -4,7 +4,7 @@ const CourseInfo = ({ infoData, promoRef }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 ">
       <div>
-        <div className="flex flex-col items-center w-full " ref={promoRef}>
+        <div className="flex flex-col items-center w-full p-3 " ref={promoRef}>
           <video
             width="640"
             height="360"
