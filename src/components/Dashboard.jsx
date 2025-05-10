@@ -3,7 +3,6 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { SlHome } from "react-icons/sl";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LuTvMinimalPlay } from "react-icons/lu";
-import { FaRegCircle } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { setVideoSrcs, setName } from "./Store/Action";
 import Curriculum from "./Curriculum";
@@ -98,7 +97,7 @@ const Dashboard = ({ handlePathname }) => {
             </div>
             <video
               src={videoSrcs}
-              className="w-[75%]  mb-5  rounded-lg"
+              className="w-[85%] mb-5 rounded-lg"
               autoPlay
               muted
               playsInline
