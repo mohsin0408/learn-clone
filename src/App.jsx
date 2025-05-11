@@ -60,7 +60,7 @@ const AppWithRouter = () => {
   return (
     <>
       {!isLecturePage &&
-        (pathname === "/Login" || pathname === "/" ? (
+        (pathname === "/login" || pathname === "/" ? (
           <Header handlePathname={handlePathname} showLinks={false} />
         ) : (
           <Header handlePathname={handlePathname} showLinks={true} />

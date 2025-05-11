@@ -63,57 +63,60 @@ const Dashboard = ({ handlePathname }) => {
     return <div className="mt-20 text-center">Lectures not found</div>;
 
   return (
-    <div className="">
-      <div className="fixed top-0 flex flex-col items-center w-full md:flex-row ">
-        <div
-          className="h-[70px] md:border-r-white border-r-white md:border-b-black
-         border-b-white border-b-2 border-r  min-w-[380px] flex max-sm:px-10 px-5 items-center justify-between bg-black text-white  max-md:w-full">
+    <div className="bg-[#f9f9fb] min-h-screen">
+      {/* Top Navigation */}
+      <div className="fixed top-0 z-50 flex flex-col w-full shadow-sm md:flex-row">
+        <div className="h-[70px] flex items-center justify-between px-5 md:border-r border-b border-gray-300 bg-black text-white min-w-[320px]">
           <SlHome
-            className="cursor-pointer text-[30px]"
+            className="cursor-pointer text-[26px]"
             onClick={() => navigate(`/course/${params.slug}`)}
           />
-          <IoSettingsOutline className="text-[30px]" />
+          <IoSettingsOutline className="text-[26px]" />
         </div>
-        <div className="h-[70px] max-sm:px-10 px-5 border-black  bg-black text-white w-full flex items-center justify-between ">
+        <div className="h-[70px] flex items-center justify-between px-5 w-full bg-black text-white">
           <RxHamburgerMenu
-            className="text-[30px] visible md:invisible "
-            onClick={() => {
-              setShow(!show), console.log("click");
-            }}
+            className="text-[26px] md:hidden cursor-pointer"
+            onClick={() => setShow(!show)}
           />
-          <Button text="complete" px="30px" py="12px" />
+          <Button text="Complete" px="24px" py="10px" />
         </div>
       </div>
 
-      <div className="w-full h-[calc(100vh_+_200px)] flex pt-[70px] ">
-        <div className=" w-[380px] h-full overflow-y-auto hidden md:block scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+      {/* Main Content */}
+      <div className="pt-[80px] md:pt-[70px] flex">
+        {/* Left Curriculum */}
+        <div className="hidden md:block w-[320px] h-[calc(100vh-70px)] overflow-y-auto border-r bg-white scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           <Curriculum dashboard lectures={lectures} />
         </div>
-        <div className="flex-1 py-10 md:pt-[20px] pt-[80px] flex flex-col items-center gap-4">
-          <div className="px-6 py-7">
-            <div className="flex items-center gap-4 mb-5 text-xl font-medium">
-              <LuTvMinimalPlay className="text-[35px] sm:text-[30px] " />
-              <p className="text-[20px] sm:text-[20px] ">{name}</p>
+
+        {/* Video Section */}
+        <div className="flex flex-col items-center flex-1 gap-6 p-5 md:p-10">
+          <div className="w-full max-w-5xl">
+            <div className="flex items-center gap-4 text-xl font-semibold mb-4 text-[#333]">
+              <LuTvMinimalPlay className="text-[28px]" />
+              <p className="text-lg md:text-xl">{name}</p>
             </div>
             <video
               src={videoSrcs}
-              className="w-[85%] mb-5 rounded-lg"
+              className="w-full shadow-lg rounded-xl"
               autoPlay
               muted
               playsInline
               controls>
               Your browser does not support the video tag.
             </video>
-            <div className="text-center">
-              <Button text="completed" px="30px" py="12px" />
+            <div className="mt-5 text-center">
+              <Button text="Completed" px="30px" py="12px" />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile Curriculum Drawer */}
       {show && (
         <div
-          className=" fixed top-40 left-0 z-50 w-full h-[calc(100vh-70px)] overflow-y-auto bg-white md:hidden scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200"
-          onClick={() => setShow(!show)}>
+          className="fixed top-[70px] left-0 z-40 w-full h-[calc(100vh-70px)] overflow-y-auto bg-white md:hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+          onClick={() => setShow(false)}>
           <Curriculum dashboard lectures={lectures} />
         </div>
       )}

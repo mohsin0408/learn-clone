@@ -1,9 +1,10 @@
+import hero from "../assets/images/hero.png";
 const heroData = {
   title: "The Academind Pro Membership",
   subtitle:
     "Unlock unlimited learning with instant access to 50 courses and continuous updates.",
   btnText: "Get Full Access Now",
-  image: "https://www.filepicker.io/api/file/Je6LIIefSQyqJ2UiQ9YJ",
+  image: hero,
 };
 
 const courseData = {
