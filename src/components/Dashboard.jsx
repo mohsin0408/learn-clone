@@ -65,20 +65,20 @@ const Dashboard = ({ handlePathname }) => {
   return (
     <div className="bg-[#f9f9fb] min-h-screen">
       {/* Top Navigation */}
-      <div className="fixed top-0 z-50 flex flex-col w-full shadow-sm md:flex-row">
-        <div className="h-[70px] flex items-center justify-between px-5 md:border-r border-b border-gray-300 bg-black text-white min-w-[320px]">
+      <div className="fixed top-0 z-50 flex w-full shadow-sm ">
+        <div className="h-[70px] flex items-center justify-between px-5 md:border-r border-b border-gray-300 bg-black text-white max-w-[320px] w-[50%] md:w-[100%]">
           <SlHome
             className="cursor-pointer text-[26px]"
             onClick={() => navigate(`/course/${params.slug}`)}
           />
           <IoSettingsOutline className="text-[26px]" />
         </div>
-        <div className="h-[70px] flex items-center justify-between px-5 w-full bg-black text-white">
+        <div className="h-[70px] flex items-center justify-between px-5 w-[50%] md:w-[100%] bg-black text-white">
           <RxHamburgerMenu
-            className="text-[26px] md:hidden cursor-pointer"
+            className="text-[26px] visible md:invisible cursor-pointer"
             onClick={() => setShow(!show)}
           />
-          <Button text="Complete" px="24px" py="10px" />
+          <Button text={"completed"} px="24px" py="10px" />
         </div>
       </div>
 
@@ -90,15 +90,15 @@ const Dashboard = ({ handlePathname }) => {
         </div>
 
         {/* Video Section */}
-        <div className="flex flex-col items-center flex-1 gap-6 p-5 md:p-10">
-          <div className="w-full max-w-5xl">
+        <div className="flex flex-col items-center flex-1 gap-6 p-10 px-5">
+          <div className="w-full ">
             <div className="flex items-center gap-4 text-xl font-semibold mb-4 text-[#333]">
               <LuTvMinimalPlay className="text-[28px]" />
               <p className="text-lg md:text-xl">{name}</p>
             </div>
             <video
               src={videoSrcs}
-              className="w-full shadow-lg rounded-xl"
+              className="w-[100%] shadow-lg rounded-xl"
               autoPlay
               muted
               playsInline
@@ -115,7 +115,7 @@ const Dashboard = ({ handlePathname }) => {
       {/* Mobile Curriculum Drawer */}
       {show && (
         <div
-          className="fixed top-[70px] left-0 z-40 w-full h-[calc(100vh-70px)] overflow-y-auto bg-white md:hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+          className="fixed  top-[70px] left-0 z-40 w-full h-[calc(100vh-70px)] overflow-y-auto bg-white md:hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
           onClick={() => setShow(false)}>
           <Curriculum dashboard lectures={lectures} />
         </div>

@@ -46,21 +46,23 @@ const MemberShipCard = ({ obj, index }) => {
     }
   };
 
+  // bg-[#2e2b3b]
+
   return (
     <div
       key={index}
-      className="flex flex-col py-2 px-4 sm:p-4 lg:p-8 text-center border border-black w-full h-[447px] sm:w-[48%] md:w-[34%] bg-[#2e2b3b] border-none shadow-xl rounded-xl justify-between">
-      <span className="pt-5 text-4xl font-bold text-center text-white">
-        {obj?.heading}
-      </span>
-      <p className="pb-5 text-4xl font-bold text-center text-white">
-        Membership
-      </p>
-      <span className="mb-3 text-base text-white">{obj?.desc}</span>
-      <span className="text-[#ffc675] lg:text-5xl md:text-3xl text-5xl font-bold leading-[85px] border-t border-[#ccc]">
+      className="flex flex-col py-4 px-4 sm:p-4 lg:p-8 text-center w-[90%] h-[447px] sm:w-[48%] md:w-[30%] bg-[#ffffff] border-2 hover:border-[#9d5ee8]  shadow-xl rounded-xl justify-between">
+      <div>
+        <span className="text-4xl font-bold text-center text-black ">
+          {obj?.heading}
+        </span>
+        <p className="text-4xl font-bold text-center text-black ">Membership</p>
+      </div>
+      <span className="mb-3 text-base text-black">{obj?.desc}</span>
+      <span className="text-[#333131] lg:text-5xl md:text-3xl text-5xl font-bold leading-[85px] border-t border-[#ccc]">
         {obj?.price}
       </span>
-      <span className="mb-3 text-xs text-white">{obj?.info}</span>
+      <span className="mb-3 text-xs text-black">{obj?.info}</span>
       <span>
         <Button
           text={obj?.btnText}

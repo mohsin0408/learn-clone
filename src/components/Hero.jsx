@@ -31,7 +31,7 @@ const Hero = ({ heroData, goToRefs }) => {
       <img
         src={heroData?.image}
         alt="hero"
-        className="w-[100%] sm:w-[75%] md:w-[50%] "
+        className="w-[100%] sm:w-[75%] md:w-[50%] rounded-xl shadow-md "
       />
     </div>
   );

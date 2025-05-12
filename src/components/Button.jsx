@@ -8,8 +8,6 @@ const Button = ({ text, obj, rounded, px, py, clickHandler }) => {
     paddingBottom: py ? `${py}` : undefined,
   };
 
-  const roundedClass =
-    rounded === "full" ? "rounded-full" : `rounded-${rounded || "md"}`;
   return (
     <>
       {Array.isArray(text) ? (
@@ -18,7 +16,11 @@ const Button = ({ text, obj, rounded, px, py, clickHandler }) => {
             onClick={() => clickHandler(obj)}
             key={index}
             className={`border border-[#5A00C7]  bg-[#5A00C7] hover:bg-[#42048e] text-white 
-              ${roundedClass} font-semibold`}
+              ${
+                rounded === "full"
+                  ? "rounded-full"
+                  : `rounded-${rounded || "md"}`
+              } font-semibold`}
             style={padding}>
             {item}
           </button>
@@ -27,7 +29,11 @@ const Button = ({ text, obj, rounded, px, py, clickHandler }) => {
         <button
           onClick={() => clickHandler(obj)}
           className={`border border-[#5A00C7]  bg-[#5A00C7] hover:bg-[#42048e] text-white 
-            ${roundedClass} font-semibold `}
+             ${
+               rounded === "full"
+                 ? "rounded-full"
+                 : `rounded-${rounded || "md"}`
+             }  font-semibold `}
           style={padding}>
           {text}
         </button>
