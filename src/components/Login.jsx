@@ -26,7 +26,7 @@ const Login = () => {
 
       if (response.ok) {
         setLoading(false);
-        navigate("/Home");
+        navigate("/home");
         localStorage.setItem(
           "user",
           JSON.stringify({

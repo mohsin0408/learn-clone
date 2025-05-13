@@ -144,7 +144,7 @@ const Registration = () => {
             py="8px"
           />
           <p className="text-sm text-center text-gray-400">
-            Already have an account? <Link to="/Login">Log in</Link>
+            Already have an account? <Link to="/login">Log in</Link>
           </p>
         </form>
       </div>
