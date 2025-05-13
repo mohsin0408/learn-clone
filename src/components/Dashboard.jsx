@@ -89,7 +89,7 @@ const Dashboard = ({ handlePathname }) => {
     <div className="bg-[#f9f9fb] min-h-screen">
       {/* Top Navigation */}
       <div className="fixed top-0 z-50 flex w-full shadow-sm ">
-        <div className="h-[70px] flex items-center justify-between px-5 md:border-r border-b border-gray-300 bg-black text-white max-w-[320px] w-[50%] md:w-[100%]">
+        <div className="h-[70px] flex items-center justify-between px-5 md:border-r border-gray-300 bg-black text-white max-w-[320px] w-[50%] md:w-[100%]">
           <SlHome
             className="cursor-pointer text-[26px]"
             onClick={() => navigate(`/course/${params.slug}`)}
@@ -101,7 +101,7 @@ const Dashboard = ({ handlePathname }) => {
             className="text-[26px] visible md:invisible cursor-pointer"
             onClick={() => setShow(!show)}
           />
-          <div className="w-10% mt-4">
+          <div className="w-[60%] md:w-[30%] mt-4">
             <div className="mb-1 text-sm font-medium text-white">
               Progress: {progressPercent}%
             </div>
