@@ -48,7 +48,7 @@ const Header = ({ handlePathname, showLinks }) => {
     <>
       <div className="sticky top-0 z-50 flex items-center justify-between h-16 gap-5 px-10 bg-[#fbf9f9] border-b md:px-32 ">
         <Link to={"/Home"}>
-          <img src={headerData.logo} alt="logo" className="w-[30%]" />
+          <img src={headerData.logo} alt="logo" className="w-[70%]" />
         </Link>
         <span className="flex gap-5">
           {showLinks && (

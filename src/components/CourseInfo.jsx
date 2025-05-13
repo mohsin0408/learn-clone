@@ -9,7 +9,7 @@ const CourseInfo = ({ infoData, promoRef }) => {
             width="640"
             height="360"
             controls
-            className="py-2"
+            className="py-2 rounded-2xl"
             src={infoData.trailer}></video>
         </div>
 
