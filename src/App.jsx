@@ -11,7 +11,7 @@ import {
 import Home from "./components/Home";
 import SingleCourse from "./components/SingleCourse";
 import Header from "../src/components/Header";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "../src/components/Store/Store";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
@@ -28,6 +28,7 @@ const App = () => {
 };
 
 const AppWithRouter = () => {
+  const theme = useSelector((state) => state.theme);
   const planRef = useRef(null);
   const promoRef = useRef(null);
   const location = useLocation();
@@ -58,7 +59,7 @@ const AppWithRouter = () => {
   }, [location]);
 
   return (
-    <>
+    <div className={theme === "light" ? "light-mode" : "dark-mode"}>
       {!isLecturePage &&
         (pathname === "/login" || pathname === "/" ? (
           <Header handlePathname={handlePathname} showLinks={false} />
@@ -95,7 +96,7 @@ const AppWithRouter = () => {
         ) : (
           <Footer handlePathname={handlePathname} showLinks={true} />
         ))}
-    </>
+    </div>
   );
 };
 

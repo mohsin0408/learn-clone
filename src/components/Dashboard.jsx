@@ -78,7 +78,6 @@ const Dashboard = ({ handlePathname }) => {
             className="text-[26px] visible md:invisible cursor-pointer"
             onClick={() => setShow(!show)}
           />
-          <Button text={"Next"} px="24px" py="10px" />
         </div>
       </div>
 

@@ -3,6 +3,7 @@ const SET_AUTHOR = "SET_AUTHOR";
 const SET_FILTERED_COURSES = "SET_FILTERED_COURSES";
 const SET_VIDEO = "SET_VIDEO";
 const SET_NAME = "SET_NAME";
+import { TOGGLE_THEME } from "./Action";
 
 const initialState = {
   category: "All",
@@ -10,6 +11,7 @@ const initialState = {
   filteredCourses: [],
   videoSrcs: "null",
   name: "null",
+  theme: "light", // 'light' or 'dark'
 };
 
 const reducer = (state = initialState, action) => {
@@ -38,6 +40,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         name: action.payload,
+      };
+    case TOGGLE_THEME:
+      return {
+        ...state,
+        theme: state.theme === "light" ? "dark" : "light",
       };
     default:
       return state;

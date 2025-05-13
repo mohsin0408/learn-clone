@@ -7,6 +7,17 @@
   box-sizing: border-box;
 }
 
+.light-mode {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
 /* .hero::before {
   content: "";
   position: absolute;

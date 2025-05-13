@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FaCircleUser } from "react-icons/fa6";
+import { FaSun, FaMoon, FaUserCircle } from "react-icons/fa"; // Add icons for theme toggle
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"; // For Redux
+import { toggleTheme } from "../components/Store/Action"; // Redux action
 import logo from "../assets/images/newlogo.jpeg";
 
 const Header = ({ handlePathname, showLinks }) => {
@@ -9,6 +11,8 @@ const Header = ({ handlePathname, showLinks }) => {
   const [profileToggle, setProfileToggle] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Dispatch function for Redux
+  const theme = useSelector((state) => state.theme); // Get current theme from Redux store
 
   useEffect(() => {
     handlePathname(location?.pathname);
@@ -33,13 +37,18 @@ const Header = ({ handlePathname, showLinks }) => {
     setProfileToggle(!profileToggle);
     setToggle(false);
   };
+
   const user = JSON.parse(localStorage.getItem("user"));
+
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme()); // Dispatch the toggle theme action
+  };
 
   return (
     <>
-      <div className="sticky top-0 z-50 flex items-center justify-between h-16 gap-5 px-10 bg-[#fbf9f9] border-b  md:px-32 ">
+      <div className="sticky top-0 z-50 flex items-center justify-between h-16 gap-5 px-10 bg-[#fbf9f9] border-b md:px-32 ">
         <Link to={"/Home"}>
-          <img src={headerData.logo} alt="logo" className="w-[30%]  " />
+          <img src={headerData.logo} alt="logo" className="w-[30%]" />
         </Link>
         <span className="flex gap-5">
           {showLinks && (
@@ -56,8 +65,8 @@ const Header = ({ handlePathname, showLinks }) => {
           <span>
             {showLinks && (
               <div className="flex items-center gap-2">
-                <FaCircleUser
-                  className="invisible text-3xl text-black lg:visible "
+                <FaUserCircle
+                  className="invisible text-3xl text-black lg:visible"
                   onClick={() => {
                     setProfileToggle(!profileToggle);
                   }}
@@ -77,17 +86,25 @@ const Header = ({ handlePathname, showLinks }) => {
               </ul>
             )}
           </span>
+          <button></button>
           {showLinks && (
             <RxHamburgerMenu
               className="text-3xl text-black lg:invisible"
               onClick={() => setToggle(!toggle)}
             />
           )}
+          {/* Theme Toggle Icon */}
+          <button onClick={handleThemeToggle} className="text-black ">
+            {theme === "light" ? (
+              <FaMoon className="text-2xl" />
+            ) : (
+              <FaSun className="text-2xl" />
+            )}
+          </button>
         </span>
       </div>
 
       {/* Hamburger Menu */}
-
       {toggle && (
         <ul className="fixed z-50 w-[100%] bg-[#fbf9f9] p-2">
           {headerData.links.map((link, index) => (
@@ -99,17 +116,12 @@ const Header = ({ handlePathname, showLinks }) => {
           ))}
           <div className="p-2">
             <div className="flex items-center gap-2">
-              <FaCircleUser className="text-3xl text-black" />
+              <FaUserCircle className="text-3xl text-black" />
               <span className="text-black lg:hidden">{user?.name}</span>
             </div>
             <span className="text-black" onClick={() => handleLogout()}>
               Logout
             </span>
-            {/* {profileToggle && (
-              <ul className="absolute bg-[rgba(238,237,241,0.97)]">
-                <li onClick={() => handleLogout()}>{item.name}</li>) }
-              </ul>
-            )} */}
           </div>
         </ul>
       )}

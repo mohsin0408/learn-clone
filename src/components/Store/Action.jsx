@@ -3,12 +3,13 @@ const SET_AUTHOR = "SET_AUTHOR";
 const SET_FILTERED_COURSES = "SET_FILTERED_COURSES";
 const SET_VIDEO = "SET_VIDEO";
 const SET_NAME = "SET_NAME";
+export const TOGGLE_THEME = "TOGGLE_THEME";
 
 const setCategory = (category) => {
   return {
     type: SET_CATEGORY,
     payload: category,
-  };
+  };  
 };
 
 const setAuthor = (author) => {
@@ -39,6 +40,12 @@ const setName = (name) => {
   };
 };
 
+const toggleTheme = () => {
+  return {
+    type: TOGGLE_THEME,
+  };
+};
+
 const filterCourses = (category, author, courseData, searchQuery = "") => {
   return (dispatch) => {
     const filteredData = courseData?.filter((course) => {
@@ -64,4 +71,5 @@ export {
   filterCourses,
   setVideoSrcs,
   setName,
+  toggleTheme,
 };
