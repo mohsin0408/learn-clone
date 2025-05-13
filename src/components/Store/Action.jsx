@@ -9,7 +9,7 @@ const setCategory = (category) => {
   return {
     type: SET_CATEGORY,
     payload: category,
-  };  
+  };
 };
 
 const setAuthor = (author) => {
@@ -45,6 +45,11 @@ const toggleTheme = () => {
     type: TOGGLE_THEME,
   };
 };
+
+export const setCompletedLectures = (completedLectures) => ({
+  type: "SET_COMPLETED_LECTURES",
+  payload: completedLectures,
+});
 
 const filterCourses = (category, author, courseData, searchQuery = "") => {
   return (dispatch) => {

@@ -12,6 +12,7 @@ const initialState = {
   videoSrcs: "null",
   name: "null",
   theme: "light", // 'light' or 'dark'
+  completedLectures: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -46,6 +47,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         theme: state.theme === "light" ? "dark" : "light",
       };
+    case "SET_COMPLETED_LECTURES":
+      return { ...state, completedLectures: action.payload };
     default:
       return state;
   }

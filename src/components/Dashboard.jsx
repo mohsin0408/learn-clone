@@ -8,6 +8,7 @@ import { setVideoSrcs, setName } from "./Store/Action";
 import Curriculum from "./Curriculum";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Button from "./Button";
+import { setCompletedLectures } from "./Store/Action";
 
 const Dashboard = ({ handlePathname }) => {
   const [show, setShow] = useState(false);
@@ -18,15 +19,37 @@ const Dashboard = ({ handlePathname }) => {
   const navigate = useNavigate();
   const videoSrcs = useSelector((state) => state.videoSrcs);
   const name = useSelector((state) => state.name);
+  const completedLectures = useSelector((state) => state.completedLectures);
 
   const location = useLocation();
   const pathname = location.pathname;
   const pathParts = pathname.split("/");
   const lastPart = pathParts[pathParts.length - 1];
 
+  const totalChapters = lectures
+    ? lectures.flatMap((s) => s.chapters).length
+    : 0;
+  const completedCount = completedLectures.length;
+  const progressPercent =
+    totalChapters > 0 ? Math.round((completedCount / totalChapters) * 100) : 0;
+
   useEffect(() => {
     handlePathname(lastPart);
   }, [lastPart, handlePathname]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("completedLectures");
+    if (saved) {
+      dispatch(setCompletedLectures(JSON.parse(saved)));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "completedLectures",
+      JSON.stringify(completedLectures)
+    );
+  }, [completedLectures]);
 
   const fetchLectures = async () => {
     try {
@@ -78,6 +101,17 @@ const Dashboard = ({ handlePathname }) => {
             className="text-[26px] visible md:invisible cursor-pointer"
             onClick={() => setShow(!show)}
           />
+          <div className="w-10% mt-4">
+            <div className="mb-1 text-sm font-medium text-white">
+              Progress: {progressPercent}%
+            </div>
+            <div className="w-full bg-white rounded-full h-2.5">
+              <div
+                className="bg-[#5A00C7] h-2.5 rounded-full transition-all duration-300"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -97,7 +131,7 @@ const Dashboard = ({ handlePathname }) => {
             </div>
             <video
               src={videoSrcs}
-              className="w-[100%] shadow-lg rounded-xl"
+              className=" w-[100%] shadow-lg rounded-xl"
               autoPlay
               muted
               playsInline
@@ -105,7 +139,18 @@ const Dashboard = ({ handlePathname }) => {
               Your browser does not support the video tag.
             </video>
             <div className="mt-5 text-center">
-              <Button text="Completed" px="30px" py="12px" />
+              <Button
+                text="Completed"
+                px="30px"
+                py="12px"
+                obj={Number(params.id)} // lecture ID pass karo
+                clickHandler={(id) => {
+                  // Duplicate na ho isliye check karo
+                  if (!completedLectures.includes(id)) {
+                    dispatch(setCompletedLectures([...completedLectures, id]));
+                  }
+                }}
+              />
             </div>
           </div>
         </div>

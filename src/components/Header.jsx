@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"; // For Redux
 import { toggleTheme } from "../components/Store/Action"; // Redux action
-import logo from "../assets/images/newlogo.jpeg";
+import logo from "../assets/images/logo.jpeg";
 
 const Header = ({ handlePathname, showLinks }) => {
   const [toggle, setToggle] = useState(false);
@@ -48,7 +48,11 @@ const Header = ({ handlePathname, showLinks }) => {
     <>
       <div className="sticky top-0 z-50 flex items-center justify-between h-16 gap-5 px-10 bg-[#fbf9f9] border-b md:px-32 ">
         <Link to={"/Home"}>
-          <img src={headerData.logo} alt="logo" className="w-[70%]" />
+          <img
+            src={headerData.logo}
+            alt="logo"
+            className="w-[70%] xs:w-[50%] md:w-[30%]"
+          />
         </Link>
         <span className="flex gap-5">
           {showLinks && (
