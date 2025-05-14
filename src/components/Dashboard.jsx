@@ -145,9 +145,32 @@ const Dashboard = ({ handlePathname }) => {
                 py="12px"
                 obj={Number(params.id)} // lecture ID pass karo
                 clickHandler={(id) => {
-                  // Duplicate na ho isliye check karo
                   if (!completedLectures.includes(id)) {
                     dispatch(setCompletedLectures([...completedLectures, id]));
+                  }
+
+                  // ✅ Find all chapter IDs
+                  const allChapters = lectures.flatMap(
+                    (section) => section.chapters
+                  );
+                  const currentIndex = allChapters.findIndex(
+                    (chapter) => chapter.id === id
+                  );
+
+                  // ✅ Navigate to next lecture if exists
+                  if (
+                    currentIndex !== -1 &&
+                    currentIndex < allChapters.length - 1
+                  ) {
+                    const nextLectureId = allChapters[currentIndex + 1].id;
+
+                    // 👇 Use your actual route format here
+                    navigate(
+                      `/course/${params.slug}/lectures/${nextLectureId}`
+                    );
+                  } else {
+                    // ✅ Optional: Last lecture alert
+                    alert("Congratulations! You've completed the course 🎉");
                   }
                 }}
               />

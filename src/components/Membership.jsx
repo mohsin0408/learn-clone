@@ -1,8 +1,11 @@
 import React from "react";
 import Button from "./Button";
 import MemberShipCard from "./MemberShipCard";
+import { useSelector } from "react-redux";
 
 const Membership = ({ planRef }) => {
+  const theme = useSelector((state) => state.theme);
+
   const membershipData = [
     {
       id: "1",
@@ -22,9 +25,12 @@ const Membership = ({ planRef }) => {
     },
   ];
 
+  const bgColor = theme === "dark" ? "bg-[#1e1e1e]" : "bg-[#f1f0f0]";
+  const textColor = theme === "dark" ? "text-gray-100" : "text-[#272626]";
+
   return (
-    <div className=" p-9 bg-[#f1f0f0] " ref={planRef}>
-      <h2 className="text-center text-[#272626] font-bold text-3xl mt-5 mb-10 ">
+    <div className={`p-9 ${bgColor}`} ref={planRef}>
+      <h2 className={`text-center font-bold text-3xl mt-5 mb-10 ${textColor}`}>
         Join Now and Become a Pro Member!
       </h2>
       <div className="flex flex-wrap items-center justify-center w-full h-full gap-10 ">

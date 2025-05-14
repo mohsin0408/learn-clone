@@ -22,11 +22,13 @@ const Course = ({ courseData }) => {
                     <span className=" text-[#5A00C7] text-lg font-bold ">
                       {obj?.title}
                     </span>
-                    <p className="text-sm line-clamp-2">{obj?.subtitle}</p>
+                    <p className="text-sm text-black line-clamp-2">
+                      {obj?.subtitle}
+                    </p>
                   </div>
                   <div className="flex items-center justify-between ">
                     <div>
-                      <p>{obj?.tutor}</p>
+                      <p className="text-black">{obj?.tutor}</p>
                       <img src={obj?.tutorImage} />
                     </div>
                     <p className="text-[#5a05c2] text-sm font-bold ">

@@ -22,6 +22,19 @@ const AllCourses = () => {
   const category = useSelector((state) => state.category);
   const author = useSelector((state) => state.author);
   const filteredCourses = useSelector((state) => state.filteredCourses);
+  const theme = useSelector((state) => state.theme);
+
+  const bgColor = theme === "dark" ? "bg-[#1e1e1e]" : "bg-[#f1f0f0]";
+  const textColor = theme === "dark" ? "text-white" : "text-[#272626]";
+  const cardBg = theme === "dark" ? "bg-[#2c2c2c]" : "bg-white";
+  const inputBg =
+    theme === "dark"
+      ? "bg-[#2c2c2c] text-white border-gray-600"
+      : "bg-white text-black";
+  const dropdownShadow =
+    theme === "dark"
+      ? "shadow-[0px_0px_25px_5px_rgba(255,_255,_255,_0.05)]"
+      : "shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)]";
 
   const [categoryToggle, setCategoryToggle] = useState(false);
   const [authorToggle, setAuthorToggle] = useState(false);
@@ -57,12 +70,17 @@ const AllCourses = () => {
   }, []);
 
   return (
-    <div className="bg-[#f1f0f0] flex flex-col items-center">
+    <div className={`${bgColor} flex flex-col items-center min-h-screen`}>
       <div className="flex flex-col items-center justify-between w-full sm:w-[53%] gap-3 px-5 py-10 md:flex-row">
         <div className="flex flex-col gap-7 sm:flex-row self-baseline ">
           <div className="relative">
             <span className="flex gap-2 ">
-              <p className="text-[#989898] text-xl ">Category:</p>
+              <p
+                className={`text-xl ${
+                  theme === "dark" ? "text-gray-300" : "text-[#989898]"
+                }`}>
+                Category:
+              </p>
               <p
                 onClick={() => setCategoryToggle(!categoryToggle)}
                 className="text-xl text-[#5A00C7] ">
@@ -70,7 +88,8 @@ const AllCourses = () => {
               </p>
             </span>
             {categoryToggle && (
-              <span className="absolute z-20 p-2 border-2 bg-white shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)] ">
+              <span
+                className={`absolute z-20 p-2 border-2 ${cardBg} ${dropdownShadow}`}>
                 {courseData
                   .map((item, index) => item.category) // Getting unique categories
                   .filter((value, index, self) => self.indexOf(value) === index) // Remove duplicates
@@ -87,7 +106,12 @@ const AllCourses = () => {
 
           <div className="relative">
             <span className="flex gap-2">
-              <p className="text-[#989898] text-xl ">Author:</p>
+              <p
+                className={`text-xl ${
+                  theme === "dark" ? "text-gray-300" : "text-[#989898]"
+                }`}>
+                Author:
+              </p>
               <p
                 onClick={() => setAuthorToggle(!authorToggle)}
                 className="text-xl text-[#5A00C7] ">
@@ -95,7 +119,8 @@ const AllCourses = () => {
               </p>
             </span>
             {authorToggle && (
-              <span className="absolute p-2 border-2 bg-white shadow-[0px_0px_55px_15px_rgba(0,_0,_0,_0.1)] ">
+              <span
+                className={` absolute p-2 border-2  ${cardBg} ${dropdownShadow}`}>
                 {courseData
                   .map((item) => item.tutor) // Getting unique authors
                   .filter((value, index, self) => self.indexOf(value) === index) // Remove duplicates
@@ -116,10 +141,11 @@ const AllCourses = () => {
             value={searchQuery}
             onChange={handleSearchChange}
             placeholder="Search by Title, Author or Category"
-            className="w-[300px] sm:w-[220px] px-4 py-1 border-2 h-11"
+            className={`w-[300px] sm:w-[220px] px-4 py-1 h-11 border-2 ${inputBg}`}
           />
-          <span className="py-[10px] px-[16px] text-lg h-11 border-2 bg-white hover:bg-[#f1f0f0] cursor-pointer ">
-            <IoSearch />
+          <span
+            className={`py-[10px] px-[16px] text-lg h-11 border-2 ${cardBg} hover:${bgColor} cursor-pointer`}>
+            <IoSearch className={textColor} />
           </span>
         </div>
       </div>

@@ -27,11 +27,9 @@ const Review = () => {
         {reviewData.map((obj, index) => (
           <div
             key={index}
-            className="flex flex-col w-[100%] p-6 shadow-[0px_0px_65px_8px_rgba(0,_0,_0,_0.1)] border-3 rounded-2xl m-0  sm:w-[100%] lg:w-[25%] lg:m-9  ">
-            <span className="text-3xl text-[#521751] mb-8 ">
-              {obj?.heading}
-            </span>
-            <span className="border-l-4 border-[#5a00c7] px-5 py-5 italic ">
+            className="flex flex-col w-[100%] p-6 shadow-[0px_0px_65px_8px_rgba(0,_0,_0,_0.1)] border-3 rounded-2xl m-0  sm:w-[100%] lg:w-[25%] lg:m-9 bg-white ">
+            <span className="mb-8 text-3xl text-black ">{obj?.heading}</span>
+            <span className="border-l-4 text-black border-[#5a00c7] px-5 py-5 italic ">
               {obj?.desc}
             </span>
           </div>

@@ -11,8 +11,8 @@ const Header = ({ handlePathname, showLinks }) => {
   const [profileToggle, setProfileToggle] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Dispatch function for Redux
-  const theme = useSelector((state) => state.theme); // Get current theme from Redux store
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme); // Get current theme
 
   useEffect(() => {
     handlePathname(location?.pathname);
@@ -31,22 +31,30 @@ const Header = ({ handlePathname, showLinks }) => {
   };
 
   const handleLogout = () => {
-    console.log("Logout");
     localStorage.removeItem("user");
     navigate("/login");
-    setProfileToggle(!profileToggle);
+    setProfileToggle(false);
     setToggle(false);
   };
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleThemeToggle = () => {
-    dispatch(toggleTheme()); // Dispatch the toggle theme action
+    dispatch(toggleTheme());
   };
+
+  // 🔥 Theme-based classes
+  const bgColor = theme === "dark" ? "bg-[#1e1e1e]" : "bg-[#fbf9f9]";
+  const textColor = theme === "dark" ? "text-white" : "text-black";
+  const hoverColor =
+    theme === "dark" ? "hover:text-gray-300" : "hover:text-[#ccc]";
+  const dropdownBg =
+    theme === "dark" ? "bg-[#2c2c2c]" : "bg-[rgba(238,237,241,0.97)]";
 
   return (
     <>
-      <div className="sticky top-0 z-50 flex items-center justify-between h-16 gap-5 px-10 bg-[#fbf9f9] border-b md:px-32 ">
+      <div
+        className={`sticky top-0 z-50 flex items-center justify-between h-16 gap-5 px-10 border-b md:px-32 ${bgColor}`}>
         <Link to={"/Home"}>
           <img
             src={headerData.logo}
@@ -54,51 +62,50 @@ const Header = ({ handlePathname, showLinks }) => {
             className="w-[70%] xs:w-[50%] md:w-[30%]"
           />
         </Link>
+
         <span className="flex gap-5">
           {showLinks && (
             <ul className="items-center justify-center hidden gap-5 cursor-pointer lg:flex">
               {headerData.links.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.link} className="text-black hover:text-[#ccc]">
+                  <Link to={item.link} className={`${textColor} ${hoverColor}`}>
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
           )}
+
           <span>
             {showLinks && (
               <div className="flex items-center gap-2">
                 <FaUserCircle
-                  className="invisible text-3xl text-black lg:visible"
-                  onClick={() => {
-                    setProfileToggle(!profileToggle);
-                  }}
+                  className={`invisible text-3xl lg:visible ${textColor}`}
+                  onClick={() => setProfileToggle(!profileToggle)}
                 />
-                <span className="text-black max-lg:hidden">{user?.name}</span>
+                <span className={`max-lg:hidden ${textColor}`}>
+                  {user?.name}
+                </span>
               </div>
             )}
 
             {profileToggle && (
-              <ul className=" absolute bg-[rgba(238,237,241,0.97)] hidden lg:block cursor-pointer p-2">
-                <li
-                  onClick={() => {
-                    handleLogout();
-                  }}>
-                  Logout
-                </li>
+              <ul
+                className={`absolute ${dropdownBg} hidden lg:block cursor-pointer p-2`}>
+                <li onClick={handleLogout}>Logout</li>
               </ul>
             )}
           </span>
-          <button></button>
+
           {showLinks && (
             <RxHamburgerMenu
-              className="text-3xl text-black lg:invisible"
+              className={`text-3xl lg:invisible ${textColor}`}
               onClick={() => setToggle(!toggle)}
             />
           )}
-          {/* Theme Toggle Icon */}
-          <button onClick={handleThemeToggle} className="text-black ">
+
+          {/* Theme Toggle Button */}
+          <button onClick={handleThemeToggle} className={`${textColor}`}>
             {theme === "light" ? (
               <FaMoon className="text-2xl" />
             ) : (
@@ -110,9 +117,9 @@ const Header = ({ handlePathname, showLinks }) => {
 
       {/* Hamburger Menu */}
       {toggle && (
-        <ul className="fixed z-50 w-[100%] bg-[#fbf9f9] p-2">
+        <ul className={`fixed z-50 w-full p-2 ${bgColor}`}>
           {headerData.links.map((link, index) => (
-            <li key={index} className="w-full p-2 text-black">
+            <li key={index} className={`w-full p-2 ${textColor}`}>
               <Link to={link.link} onClick={() => setToggle(false)}>
                 {link.name}
               </Link>
@@ -120,10 +127,10 @@ const Header = ({ handlePathname, showLinks }) => {
           ))}
           <div className="p-2">
             <div className="flex items-center gap-2">
-              <FaUserCircle className="text-3xl text-black" />
-              <span className="text-black lg:hidden">{user?.name}</span>
+              <FaUserCircle className={`text-3xl ${textColor}`} />
+              <span className={`lg:hidden ${textColor}`}>{user?.name}</span>
             </div>
-            <span className="text-black" onClick={() => handleLogout()}>
+            <span className={textColor} onClick={handleLogout}>
               Logout
             </span>
           </div>
